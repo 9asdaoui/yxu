@@ -1,0 +1,8 @@
+{
+  "name": "Imane Birthday",
+  "short_name": "Imane",
+  "theme_color": "#ff6b9d",
+  "background_color": "#291b3e",
+  "display": "standalone",
+  "start_url": "/"
+}
