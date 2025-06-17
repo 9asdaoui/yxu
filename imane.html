@@ -1,595 +1,1292 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imane's Birthday Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap');
-        
-        * { font-family: 'Inter', sans-serif; }
-        
-        .handwritten { font-family: 'Caveat', cursive; }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-shadow {
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.12),
-                0 2px 16px rgba(0, 0, 0, 0.08),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
-        }
-        
-        .cute-shadow {
-            box-shadow: 
-                0 4px 20px rgba(255, 182, 193, 0.3),
-                0 2px 10px rgba(186, 85, 211, 0.2);
-        }
-        
-        .subtle-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .subtle-hover:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-        }
-        
-        .bounce-hover:hover {
-            animation: bounce 0.6s ease-in-out;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 60%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            80% { transform: translateY(-5px); }
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-        }
-        
-        .dot-pattern {
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 192, 203, 0.15) 2px, transparent 2px),
-                radial-gradient(circle at 80% 50%, rgba(221, 160, 221, 0.15) 2px, transparent 2px),
-                radial-gradient(circle at 40% 20%, rgba(255, 182, 193, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px, 40px 40px, 20px 20px;
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-delayed {
-            animation: float 6s ease-in-out infinite 2s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        
-        .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes pulse-glow {
-            from { box-shadow: 0 0 20px rgba(255, 20, 147, 0.4); }
-            to { box-shadow: 0 0 30px rgba(255, 20, 147, 0.6), 0 0 50px rgba(186, 85, 211, 0.3); }
-        }
-        
-        .glow {
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
-        }
-        
-        .confession-text {
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% 200%;
-            animation: gradient-shift 3s ease infinite;
-        }
-        
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-        
-        .sparkle {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .sparkle::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: sparkle 3s linear infinite;
-        }
-        
-        @keyframes sparkle {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .message-success {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            margin-top: 1rem;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: slideIn 0.5s ease forwards;
-        }
-        
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <title>Imane's Birthday Experience - Deluxe Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+                -webkit-tap-highlight-color: transparent;
             }
-        }
-        
-        .heart-beat {
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .cute-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .cute-input:focus {
-            border-color: rgba(255, 182, 193, 0.8);
-            box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.1);
-            outline: none;
-        }
-        
-        .cute-button {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cute-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .cute-button:hover::before {
-            left: 100%;
-        }
-    </style>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-indigo-900 dot-pattern">
-    
-    <!-- Age Modal -->
-    <div id="ageModal" class="modal">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4 floating">⚡</div>
-                    <h3 class="text-3xl font-bold mb-2 text-white handwritten">Reality Check Time</h3>
-                </div>
-                <p class="text-gray-300 text-center mb-6 text-lg">Birth year? (I promise not to judge... much)</p>
-                <input type="number" id="birthYear" placeholder="e.g., 1995" 
-                       class="w-full p-4 rounded-xl cute-input text-white placeholder-gray-400 mb-6 text-lg" 
-                       min="1900" max="2024">
-                <div class="flex gap-4">
-                    <button onclick="calculateAge()" class="flex-1 cute-button text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                        Hit Me With It
-                    </button>
-                    <button onclick="closeModal('ageModal')" class="flex-1 bg-white/20 text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                        Nevermind
-                    </button>
-                </div>
-                <div id="ageResult" class="mt-6 text-center font-medium text-white text-lg"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Fortune Modal -->
-    <div id="fortuneModal" class="modal">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4 floating-delayed">🔮</div>
-                    <h3 class="text-3xl font-bold mb-2 text-white handwritten">Your Birthday Oracle</h3>
-                </div>
-                <div id="fortuneText" class="text-center mb-8 text-lg text-gray-300 leading-relaxed bg-white/5 p-6 rounded-2xl"></div>
-                <button onclick="closeModal('fortuneModal')" class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                    I Accept My Fate ✨
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Confession Modal -->
-    <div id="confessionModal" class="modal">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="glass-strong rounded-3xl p-8 max-w-md w-full pulse-glow">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4 heart-beat">💕</div>
-                    <h3 class="text-3xl font-bold mb-2 text-white handwritten">Plot Twist</h3>
-                </div>
-                <div class="text-center mb-8">
-                    <p class="confession-text text-2xl font-bold mb-4 handwritten">
-                        Okay, confession time...
-                    </p>
-                    <div class="bg-white/10 p-6 rounded-2xl">
-                        <p class="text-gray-300 leading-relaxed text-lg">
-                            Beneath all this sarcasm lies my very un-sarcastic truth: you're incredible, and honestly, it's terrifying how much I like you. So... Happy Birthday to the amazing human who's stolen my defenses. 🥺💖
-                        </p>
-                    </div>
-                </div>
-                <button onclick="closeModal('confessionModal')" class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                    My Heart Can't Handle This 💗
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Message Modal -->
-    <div id="messageModal" class="modal">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4 floating">📝</div>
-                    <h3 class="text-3xl font-bold mb-2 text-white handwritten">Leave a Message to Your Hype Boy</h3>
-                </div>
-                <form id="messageForm" class="space-y-6">
-                    <div>
-                        <label class="block text-gray-300 text-sm font-medium mb-2">Your message:</label>
-                        <textarea id="messageInput" rows="4" placeholder="Tell me what's on your mind..." 
-                                  class="w-full p-4 rounded-xl cute-input text-white placeholder-gray-400 resize-none text-lg"
-                                  required></textarea>
-                    </div>
-                    <div class="flex gap-4">
-                        <button type="submit" class="flex-1 cute-button text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                            Send Message 💌
-                        </button>
-                        <button type="button" onclick="closeModal('messageModal')" class="flex-1 bg-white/20 text-white py-4 rounded-xl font-semibold subtle-hover text-lg">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-                <div id="messageResult"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container mx-auto px-4 py-8 max-w-md">
-        
-        <!-- Main Card -->
-        <div class="glass-strong rounded-3xl overflow-hidden card-shadow sparkle">
-            
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 p-8 text-center relative">
-                <div class="floating absolute top-6 right-6 text-3xl">💫</div>
-                <div class="floating-delayed absolute top-6 left-6 text-3xl">🎀</div>
-                <h1 class="text-white text-4xl font-bold mb-3 handwritten">Happy Birthday</h1>
-                <h2 class="text-white/95 text-5xl font-light handwritten">Imane</h2>
-                <div class="mt-4 text-white/80 text-base handwritten">
-                    Crafted with questionable intentions 😏
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-400 to-purple-400"></div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="p-8 space-y-8">
-                
-                <!-- Opening Line -->
-                <div class="text-center bg-white/5 p-6 rounded-2xl">
-                    <p id="openingLine" class="text-gray-300 text-xl leading-relaxed handwritten"></p>
-                </div>
-                
-                <!-- Cake Section -->
-                <div class="text-center">
-                    <div id="cake" class="inline-block cursor-pointer subtle-hover bounce-hover p-6 bg-white/10 rounded-3xl" onclick="blowCandles()">
-                        <div class="text-8xl mb-3">🎂</div>
-                        <div class="text-gray-400 text-base handwritten">Make a wish (I dare you)</div>
-                    </div>
-                </div>
-                
-                <!-- Facts Section -->
-                <div class="glass rounded-3xl p-6 cute-shadow">
-                    <h3 class="text-white font-bold mb-6 text-center text-2xl handwritten">Facts About Imane</h3>
-                    <div id="roastBox" class="text-center">
-                        <div class="bg-white/10 p-6 rounded-2xl mb-6">
-                            <p id="currentRoast" class="text-gray-300 mb-4 leading-relaxed text-lg"></p>
-                        </div>
-                        <button onclick="generateRoast()" class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl font-semibold subtle-hover text-lg">
-                            Show Me Another Fact ✨
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Action Grid -->
-                <div class="grid grid-cols-2 gap-4">
-                    <button onclick="createConfetti()" class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow">
-                        <div class="text-3xl mb-2">🎊</div>
-                        <div class="text-white text-base font-semibold handwritten">Celebrate</div>
-                    </button>
-                    
-                    <button onclick="openModal('fortuneModal')" class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow">
-                        <div class="text-3xl mb-2">🔮</div>
-                        <div class="text-white text-base font-semibold handwritten">Fortune</div>
-                    </button>
-                    
-                    <button onclick="openModal('ageModal')" class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow">
-                        <div class="text-3xl mb-2">📊</div>
-                        <div class="text-white text-base font-semibold handwritten">Age Check</div>
-                    </button>
-                    
-                    <button onclick="takePhoto()" class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow">
-                        <div class="text-3xl mb-2">📸</div>
-                        <div class="text-white text-base font-semibold handwritten">Memories</div>
-                    </button>
-                </div>
-                
-                <!-- Message Button -->
-                <div class="text-center">
-                    <button onclick="openModal('messageModal')" class="cute-button text-white px-8 py-4 rounded-2xl font-semibold subtle-hover text-lg w-full">
-                        <span class="handwritten text-xl">📝 Leave a Message to Your Hype Boy</span>
-                    </button>
-                </div>
-                
-                <div id="photoResult" class="text-center text-gray-400 text-base bg-white/5 p-4 rounded-xl"></div>
-                
-                <!-- Secret Button -->
-                <div class="text-center pt-6">
-                    <button onclick="openModal('confessionModal')" class="text-pink-400 hover:text-pink-300 text-base underline opacity-70 hover:opacity-100 transition-all handwritten">
-                        There's something I need to tell you... 💕
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Footer -->
-            <div class="glass p-6 text-center border-t border-white/20">
-                <p class="text-gray-400 text-base handwritten">From your favorite pain in the ass</p>
-                <p class="text-white font-semibold text-lg handwritten">— Someone who cares more than they admit 💕</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Confetti Container -->
-    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <script>
-        // Sophisticated opening lines
-        const openingLines = [
-            "Once upon a time, a legend named Imane was born… and the world's been better ever since."
-        ];
-        
-        // Display random opening line
-        document.getElementById('openingLine').textContent = openingLines[Math.floor(Math.random() * openingLines.length)];
-        
-        // Clever roasts
-        const roasts = [
-            "Claims she's \"not photogenic\"...But looks like a Disney princess in every single photo.",
-            "Can roast you with kindness. Her sarcasm is soft, but it burns.",
-            "She's not bossy. She just knows better than everyone else.",
-        ];
-        
-        let roastIndex = 0;
-        generateRoast();
-        
-        function generateRoast() {
-            document.getElementById('currentRoast').textContent = roasts[roastIndex];
-            roastIndex = (roastIndex + 1) % roasts.length;
-        }
-        
-        // Enhanced fortune telling
-        function generateFortune() {
-            const fortunes = [
-                "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
-                "A mysterious person still wants your genes.",
-                "You'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
-                "This year's gift? Another reason to say 'boys are dumb'.",
-            ];
-            
-            document.getElementById('fortuneText').textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
-        }
-        
-        // Sophisticated age calculator
-        function calculateAge() {
-            const birthYear = parseInt(document.getElementById('birthYear').value);
-            if (!birthYear) return;
-            
-            const age = new Date().getFullYear() - birthYear;
-            
-            const responses = [
-                `${age} years of mastering the art of ignoring people... and looking fabulous doing it.`,   
-                `${age} years old and still dodging emotional attachment like it's a spam call.`,
-                `${age} candles on the cake. One for each time someone told you you're intimidating and you took it as a compliment.`
-            ];
-            
-            document.getElementById('ageResult').textContent = responses[Math.floor(Math.random() * responses.length)];
-        }
-        
-        // Candle wishes
-        function blowCandles() {
-            const wishes = [
-                "You wished for honesty, so here it is: Someone's crushing hard and hiding it behind sarcastic code.",
-                "Wish granted: You now officially have the power to scare men.",
-                "Your wish to be left alone has been granted. Except by me. Obviously.",
-                "The Universe considered your wish for a quiet life… then muted everyone around you. Including me. Rude.",
-                "Plot twist: Someone already wished you'd say yes to giving them your genes. Again.",
-            ];
-            
-            showMessage(wishes[Math.floor(Math.random() * wishes.length)]);
-        }
-        
-        // Photo captions
-        function takePhoto() {
-            const captions = [
-                "📸 *Click* Perfect! You look like trouble... the good kind.",
-                "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
-                "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
-                "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
-                "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people."
-            ];
-            
-            document.getElementById('photoResult').textContent = captions[Math.floor(Math.random() * captions.length)];
-        }
-        
-        // Enhanced confetti
-        function createConfetti() {
-            const container = document.getElementById('confetti-container');
-            const colors = ['#ff6b9d', '#c44569', '#f8b500', '#f0932b', '#6c5ce7', '#a29bfe', '#fd79a8', '#fdcb6e'];
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.cssText = `
-                    position: absolute;
-                    width: ${Math.random() * 10 + 5}px;
-                    height: ${Math.random() * 10 + 5}px;
-                    background: ${color};
-                    top: -20px;
-                    left: ${Math.random() * 100}%;
-                    transform: rotate(${Math.random() * 360}deg);
-                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                    transition: all ${Math.random() * 2 + 3}s cubic-bezier(0.23, 1, 0.32, 1);
-                    box-shadow: 0 0 10px ${color}50;
-                `;
-                
-                container.appendChild(confetti);
-                
-                setTimeout(() => {
-                    confetti.style.top = '100vh';
-                    confetti.style.left = `${Math.random() * 100}%`;
-                    confetti.style.opacity = '0';
-                    confetti.style.transform = `rotate(${Math.random() * 720}deg) scale(0.5)`;
-                }, 10);
-                
-                setTimeout(() => confetti.remove(), 5000);
+            .handwritten {
+                font-family: "Caveat", cursive;
             }
-        }
-        
-        // Message form handling
-        document.getElementById('messageForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const messageInput = document.getElementById('messageInput');
-            const messageResult = document.getElementById('messageResult');
-            const message = messageInput.value.trim();
-            
-            if (!message) {
-                messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
-                return;
+
+            .glass {
+                background: rgba(255, 255, 255, 0.15);
+                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
             }
-            
-            // Show loading state
-            messageResult.innerHTML = '<div class="text-center mt-4 text-gray-300">Sending your message... 💕</div>';
-            
-            try {
-                const formData = new FormData();
-                formData.append('name', 'oussama');
-                formData.append('email', 'oussamaa@gmail.com');
-                formData.append('message', message);
+
+            .glass-strong {
+                background: rgba(255, 255, 255, 0.9);
+                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                color: #333;
+                border-radius: 1.5rem;
+                -webkit-border-radius: 1.5rem;
+            }
+
+            .glass-strong h3 {
+                color: #333 !important;
+            }
+
+            .glass-strong .text-gray-300 {
+                color: #555 !important;
+            }
+
+            .glass-strong .text-white {
+                color: #333 !important;
+            }
+
+            .gradient-text {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-fill-color: transparent;
+            }
+
+            .card-shadow {
+                -webkit-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            }
+
+            .cute-shadow {
+                -webkit-box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3), 0 2px 10px rgba(186, 85, 211, 0.2);
+                box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3), 0 2px 10px rgba(186, 85, 211, 0.2);
+            }
+
+            .subtle-hover {
+                -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @media (hover: hover) {
+                .subtle-hover:hover {
+                    -webkit-transform: translateY(-3px) scale(1.02);
+                    transform: translateY(-3px) scale(1.02);
+                    -webkit-box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+                }
                 
-                const response = await fetch('https://oussamaapi.azizbenmallouk.com/api/messages', {
-                    method: 'POST',
-                    body: formData
+                .bounce-hover:hover {
+                    animation: bounce 0.6s ease-in-out;
+                    -webkit-animation: bounce 0.6s ease-in-out;
+                }
+            }
+
+            @-webkit-keyframes bounce {
+                0%, 20%, 60%, 100% {
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+                40% {
+                    -webkit-transform: translateY(-10px);
+                    transform: translateY(-10px);
+                }
+                80% {
+                    -webkit-transform: translateY(-5px);
+                    transform: translateY(-5px);
+                }
+            }
+
+            @keyframes bounce {
+                0%, 20%, 60%, 100% {
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+                40% {
+                    -webkit-transform: translateY(-10px);
+                    transform: translateY(-10px);
+                }
+                80% {
+                    -webkit-transform: translateY(-5px);
+                    transform: translateY(-5px);
+                }
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.9);
+                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(15px);
+            }
+
+            .dot-pattern {
+                background: linear-gradient(to bottom right, #291b3e, #483475, #3e1f47);
+                background-image: radial-gradient(
+                        circle at 15px 15px,
+                        rgba(255, 255, 255, 0.1) 2px,
+                        transparent 0
+                    ),
+                    radial-gradient(
+                        circle at 45px 45px,
+                        rgba(255, 255, 255, 0.05) 3px,
+                        transparent 0
+                    );
+                background-size: 60px 60px;
+                position: relative;
+            }
+
+            .dot-pattern::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+                z-index: 0;
+            }
+
+            .floating {
+                -webkit-animation: float 6s ease-in-out infinite;
+                animation: float 6s ease-in-out infinite;
+                will-change: transform;
+            }
+
+            .floating-delayed {
+                -webkit-animation: float 6s ease-in-out infinite 2s;
+                animation: float 6s ease-in-out infinite 2s;
+                will-change: transform;
+            }
+
+            @-webkit-keyframes float {
+                0%, 100% {
+                    -webkit-transform: translateY(0px) rotate(0deg);
+                    transform: translateY(0px) rotate(0deg);
+                }
+                50% {
+                    -webkit-transform: translateY(-15px) rotate(5deg);
+                    transform: translateY(-15px) rotate(5deg);
+                }
+            }
+
+            @keyframes float {
+                0%, 100% {
+                    -webkit-transform: translateY(0px) rotate(0deg);
+                    transform: translateY(0px) rotate(0deg);
+                }
+                50% {
+                    -webkit-transform: translateY(-15px) rotate(5deg);
+                    transform: translateY(-15px) rotate(5deg);
+                }
+            }
+
+            .pulse-glow {
+                -webkit-animation: pulse-glow 2s ease-in-out infinite alternate;
+                animation: pulse-glow 2s ease-in-out infinite alternate;
+            }
+
+            @-webkit-keyframes pulse-glow {
+                from {
+                    -webkit-box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+                    box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+                }
+                to {
+                    -webkit-box-shadow: 0 0 30px rgba(255, 20, 147, 0.6), 0 0 50px rgba(186, 85, 211, 0.3);
+                    box-shadow: 0 0 30px rgba(255, 20, 147, 0.6), 0 0 50px rgba(186, 85, 211, 0.3);
+                }
+            }
+
+            @keyframes pulse-glow {
+                from {
+                    -webkit-box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+                    box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+                }
+                to {
+                    -webkit-box-shadow: 0 0 30px rgba(255, 20, 147, 0.6), 0 0 50px rgba(186, 85, 211, 0.3);
+                    box-shadow: 0 0 30px rgba(255, 20, 147, 0.6), 0 0 50px rgba(186, 85, 211, 0.3);
+                }
+            }
+
+            .glow {
+                -webkit-box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+                box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+            }
+
+            .confession-text {
+                background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-fill-color: transparent;
+                background-size: 200% 200%;
+                -webkit-animation: gradient-shift 3s ease infinite;
+                animation: gradient-shift 3s ease infinite;
+            }
+
+            @-webkit-keyframes gradient-shift {
+                0%, 100% {
+                    background-position: 0% center;
+                }
+                50% {
+                    background-position: 100% center;
+                }
+            }
+
+            @keyframes gradient-shift {
+                0%, 100% {
+                    background-position: 0% center;
+                }
+                50% {
+                    background-position: 100% center;
+                }
+            }
+
+            .sparkle {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .sparkle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent
+                );
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                -webkit-animation: sparkle 3s linear infinite;
+                animation: sparkle 3s linear infinite;
+            }
+
+            @-webkit-keyframes sparkle {
+                0% {
+                    -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                }
+                100% {
+                    -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
+                    transform: translateX(100%) translateY(100%) rotate(45deg);
+                }
+            }
+
+            @keyframes sparkle {
+                0% {
+                    -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                }
+                100% {
+                    -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
+                    transform: translateX(100%) translateY(100%) rotate(45deg);
+                }
+            }
+
+            .message-success {
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+                padding: 1rem;
+                border-radius: 0.75rem;
+                margin-top: 1rem;
+                text-align: center;
+                opacity: 0;
+                -webkit-transform: translateY(10px);
+                transform: translateY(10px);
+                -webkit-animation: slideIn 0.5s ease forwards;
+                animation: slideIn 0.5s ease forwards;
+            }
+
+            @-webkit-keyframes slideIn {
+                to {
+                    opacity: 1;
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+
+            .heart-beat {
+                -webkit-animation: heartbeat 1.5s ease-in-out infinite;
+                animation: heartbeat 1.5s ease-in-out infinite;
+            }
+
+            @-webkit-keyframes heartbeat {
+                0%, 100% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+            }
+
+            @keyframes heartbeat {
+                0%, 100% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+                50% {
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+            }
+
+            .cute-input {
+                background: rgba(255, 255, 255, 0.8);
+                border: 2px solid rgba(139, 69, 19, 0.3);
+                -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                color: #333;
+                -webkit-appearance: none;
+                appearance: none;
+                border-radius: 0.75rem;
+            }
+
+            .cute-input:focus {
+                border-color: rgba(139, 69, 19, 0.8);
+                -webkit-box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
+                box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
+                outline: none;
+            }
+
+            .cute-input::placeholder {
+                color: #666;
+            }
+
+            .cute-button {
+                background: linear-gradient(135deg, #5a9a8b, #c8a882);
+                position: relative;
+                overflow: hidden;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+
+            .cute-button::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+                );
+                -webkit-transition: left 0.5s ease;
+                transition: left 0.5s ease;
+            }
+
+            @media (hover: hover) {
+                .cute-button:hover::before {
+                    left: 100%;
+                }
+            }
+
+            .rounded-3xl {
+                border-radius: 1.5rem;
+                -webkit-border-radius: 1.5rem;
+                overflow: hidden;
+            }
+
+            body {
+                position: relative;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                overscroll-behavior: none;
+            }
+
+            body::after {
+                content: "";
+                position: fixed;
+                top: 30%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width: 70vw;
+                height: 70vh;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(233, 183, 236, 0.15) 0%,
+                    transparent 70%
+                );
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            /* Fix for iOS Safari */
+            @supports (-webkit-touch-callout: none) {
+                .glass, .glass-strong {
+                    -webkit-backdrop-filter: saturate(180%) blur(15px);
+                    backdrop-filter: saturate(180%) blur(15px);
+                }
+                
+                input, button, textarea {
+                    font-size: 16px; /* Prevents zoom on iOS */
+                }
+                
+                .modal {
+                    position: fixed;
+                    top: env(safe-area-inset-top, 0);
+                    bottom: env(safe-area-inset-bottom, 0);
+                    left: env(safe-area-inset-left, 0);
+                    right: env(safe-area-inset-right, 0);
+                }
+            }
+
+            /* Fix for Safari animations */
+            @media not all and (min-resolution:.001dpcm) { 
+                @supports (-webkit-appearance:none) {
+                    .floating, .floating-delayed, .heart-beat {
+                        transform: translateZ(0);
+                        -webkit-transform: translateZ(0);
+                    }
+                }
+            }
+
+            /* Improved accessibility */
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+            }
+
+            /* Better mobile experience */
+            @media (max-width: 640px) {
+                .glass-strong {
+                    border-radius: 1.25rem;
+                    -webkit-border-radius: 1.25rem;
+                }
+                
+                .message-popup {
+                    width: calc(100% - 2rem) !important;
+                    left: 1rem !important;
+                    right: 1rem !important;
+                }
+            }
+
+            /* Force hardware acceleration */
+            .hw-accelerated {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                will-change: transform;
+            }
+
+            /* Improved fallingStar animation */
+            @-webkit-keyframes fallingStar {
+                0% { 
+                    -webkit-transform: translateY(0) rotate(0deg) scale(0); 
+                    transform: translateY(0) rotate(0deg) scale(0); 
+                    opacity: 0; 
+                }
+                10% { opacity: 1; }
+                100% { 
+                    -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5); 
+                    transform: translateY(100vh) rotate(360deg) scale(0.5); 
+                    opacity: 0; 
+                }
+            }
+
+            @keyframes fallingStar {
+                0% { 
+                    -webkit-transform: translateY(0) rotate(0deg) scale(0); 
+                    transform: translateY(0) rotate(0deg) scale(0); 
+                    opacity: 0; 
+                }
+                10% { opacity: 1; }
+                100% { 
+                    -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5); 
+                    transform: translateY(100vh) rotate(360deg) scale(0.5); 
+                    opacity: 0; 
+                }
+            }
+        </style>
+    </head>
+    <body
+        class="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-indigo-900 dot-pattern overscroll-none"
+    >
+        <!-- Age Modal -->
+        <div id="ageModal" class="modal">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4 floating">⚡</div>
+                        <h3 class="text-3xl font-bold mb-2 text-white handwritten">
+                            Reality Check Time
+                        </h3>
+                    </div>
+
+                    <div
+                        id="photoResult"
+                        class="text-center text-gray-400 text-base bg-white/5 p-4 rounded-xl"
+                    ></div>
+                    <p class="text-gray-300 text-center mb-6 text-lg">
+                        Birth year? (I promise not to judge... much)
+                    </p>
+                    <input
+                        type="number"
+                        id="birthYear"
+                        placeholder="e.g., 1995"
+                        class="w-full p-4 rounded-xl cute-input text-black placeholder-gray-400 mb-6 text-lg"
+                        min="1900"
+                        max="2024"
+                        inputmode="numeric"
+                    />
+                    <div class="flex gap-4">
+                        <button
+                            onclick="calculateAge()"
+                            class="flex-1 cute-button text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                        >
+                            Hit Me With It
+                        </button>
+                        <button
+                            onclick="closeModal('ageModal')"
+                            class="flex-1 bg-white/20 text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                        >
+                            Nevermind
+                        </button>
+                    </div>
+                    <div
+                        id="ageResult"
+                        class="mt-6 text-center font-medium text-black text-lg"
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fortune Modal -->
+        <div id="fortuneModal" class="modal">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4 floating-delayed">🔮</div>
+                        <h3 class="text-3xl font-bold mb-2 text-white handwritten">
+                            Your Birthday Oracle
+                        </h3>
+                    </div>
+                    <div
+                        id="fortuneText"
+                        class="text-center mb-8 text-lg text-gray-600 leading-relaxed bg-white/5 p-6 rounded-2xl"
+                    ></div>
+                    <button
+                        onclick="closeModal('fortuneModal')"
+                        class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                    >
+                        I Accept My Fate ✨
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confession Modal -->
+        <div id="confessionModal" class="modal">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="glass-strong rounded-3xl p-8 max-w-md w-full pulse-glow">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4 heart-beat hw-accelerated">💕</div>
+                        <h3 class="text-3xl font-bold mb-2 text-white handwritten">
+                            Plot Twist
+                        </h3>
+                    </div>
+                    <div class="text-center mb-8">
+                        <p class="confession-text text-2xl font-bold mb-4 handwritten">
+                            Okay, confession time...
+                        </p>
+                        <div class="bg-white/10 p-6 rounded-2xl">
+                            <p class="text-gray-600 leading-relaxed text-lg">
+                                Beneath all this sarcasm lies my very un-sarcastic truth: you're
+                                incredible, and honestly, it's terrifying how much I like you.
+                                So... Happy Birthday to the amazing human who's stolen my
+                                defenses. 🥺💖
+                            </p>
+                        </div>
+                    </div>
+                    <button
+                        onclick="closeModal('confessionModal')"
+                        class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                    >
+                        My Heart Can't Handle This 💗
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Modal -->
+        <div id="messageModal" class="modal">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="glass-strong rounded-3xl p-8 max-w-md w-full cute-shadow">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4 floating hw-accelerated">📝</div>
+                        <h3 class="text-3xl font-bold mb-2 text-white handwritten">
+                            Leave a Message to Your Hype Boy
+                        </h3>
+                    </div>
+                    <form id="messageForm" class="space-y-6">
+                        <div>
+                            <label for="messageInput" class="block text-gray-600 text-sm font-medium mb-2">Your message:</label>
+                            <textarea
+                                id="messageInput"
+                                rows="4"
+                                placeholder="Tell me what's on your mind..."
+                                class="w-full p-4 rounded-xl cute-input text-black placeholder-gray-400 resize-none text-lg"
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="flex gap-4">
+                            <button
+                                type="submit"
+                                class="flex-1 cute-button text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                            >
+                                Send Message 💌
+                            </button>
+                            <button
+                                type="button"
+                                onclick="closeModal('messageModal')"
+                                class="flex-1 bg-white/20 text-white py-4 rounded-xl font-semibold subtle-hover text-lg"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                    <div id="messageResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-8 max-w-md">
+            <!-- Main Card -->
+            <div class="glass-strong rounded-3xl overflow-hidden card-shadow sparkle">
+                <!-- Header -->
+                <div
+                    class="bg-gradient-to-r from-amber-100 via-rose-200 to-slate-300 p-8 text-center relative border-b-4 border-teal-600"
+                >
+                    <div class="floating absolute top-6 right-6 text-3xl hw-accelerated">💫</div>
+                    <div class="floating-delayed absolute top-6 left-6 text-3xl hw-accelerated">🎀</div>
+                    <h1 class="text-amber-900 text-4xl font-bold mb-3 handwritten">
+                        Happy Birthday
+                    </h1>
+                    <h2 class="text-slate-700 text-5xl font-light handwritten">Imane</h2>
+                    <div class="mt-4 text-slate-600 text-base handwritten">
+                        Crafted with questionable intentions 😏
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="p-8 space-y-8">
+                    <!-- Opening Line -->
+                    <div class="text-center bg-white/5 p-6 rounded-2xl">
+                        <p
+                            id="openingLine"
+                            class="text-gray-600 text-xl leading-relaxed handwritten"
+                        ></p>
+                    </div>
+
+                    <!-- Cake Section -->
+                    <div class="text-center">
+                        <div
+                            id="cake"
+                            class="inline-block cursor-pointer subtle-hover bounce-hover p-6 bg-white/10 rounded-3xl"
+                            onclick="blowCandles()"
+                        >
+                            <div class="text-8xl mb-3">🎂</div>
+                            <div class="text-gray-600 text-base handwritten">
+                                Make a wish (I dare you)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facts Section -->
+                    <div class="glass rounded-3xl p-6 cute-shadow">
+                        <h3
+                            class="text-gray-700 font-bold mb-6 text-center text-2xl handwritten"
+                        >
+                            Facts About Imane
+                        </h3>
+                        <div id="roastBox" class="text-center">
+                            <div class="bg-white/10 p-6 rounded-2xl mb-6">
+                                <p
+                                    id="currentRoast"
+                                    class="text-gray-600 mb-4 leading-relaxed text-lg"
+                                ></p>
+                            </div>
+                            <button
+                                onclick="generateRoast()"
+                                class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl font-semibold subtle-hover text-lg"
+                            >
+                                Show Me Another Fact ✨
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <button
+                            onclick="createConfetti()"
+                            class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow"
+                            aria-label="Celebrate with confetti"
+                        >
+                            <div class="text-3xl mb-2">🎊</div>
+                            <div class="text-white text-base font-semibold handwritten">
+                                Celebrate
+                            </div>
+                        </button>
+
+                        <button
+                            onclick="openModal('fortuneModal')"
+                            class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow"
+                            aria-label="Read your birthday fortune"
+                        >
+                            <div class="text-3xl mb-2">🔮</div>
+                            <div class="text-white text-base font-semibold handwritten">
+                                Fortune
+                            </div>
+                        </button>
+
+                        <button
+                            onclick="openModal('ageModal')"
+                            class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow"
+                            aria-label="Check your age"
+                        >
+                            <div class="text-3xl mb-2">📊</div>
+                            <div class="text-white text-base font-semibold handwritten">
+                                Age Check
+                            </div>
+                        </button>
+
+                        <button
+                            onclick="takePhoto()"
+                            class="glass p-6 rounded-2xl text-center subtle-hover cute-shadow"
+                            aria-label="Take a memory photo"
+                        >
+                            <div class="text-3xl mb-2">📸</div>
+                            <div class="text-white text-base font-semibold handwritten">
+                                Memories
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Secret Button -->
+                    <div class="text-center pt-6">
+                        <button
+                            onclick="openModal('confessionModal')"
+                            class="text-rose-600 hover:text-rose-500 text-base underline opacity-70 hover:opacity-100 transition-all handwritten"
+                            aria-label="Read a secret message"
+                        >
+                            There's something I need to tell you... 💕
+                        </button>
+                    </div>
+
+                    <!-- Message Button -->
+                    <div class="text-center">
+                        <button
+                            onclick="openModal('messageModal')"
+                            class="cute-button text-white px-8 py-4 rounded-2xl font-semibold subtle-hover text-lg w-full"
+                            aria-label="Leave a message"
+                        >
+                            <span class="handwritten text-xl"
+                                >📝 Leave a Message to Your Hype Boy</span
+                            >
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="glass p-6 text-center border-t border-amber-200">
+                    <p class="text-slate-600 text-base handwritten">
+                        From your favorite pain in the ass
+                    </p>
+                    <p class="text-slate-700 font-semibold text-lg handwritten">
+                        — Someone who cares more than they admit 💕
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confetti Container -->
+        <div
+            id="confetti-container"
+            class="fixed inset-0 pointer-events-none z-50"
+            aria-hidden="true"
+        ></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Prevent iOS Safari bouncing effect
+                document.body.addEventListener('touchmove', function(e) {
+                    if (e.target.closest('.modal-content') === null) {
+                        e.preventDefault();
+                    }
+                }, { passive: false });
+                
+                // Sophisticated opening lines
+                const openingLines = [
+                    "Once upon a time, a legend named Imane was born… and the world's been better ever since.",
+                    "Today we celebrate the day the universe decided to gift us someone extraordinary.",
+                    "Another trip around the sun completed by the incredible Imane, and what a journey it's been!",
+                ];
+
+                // Display random opening line
+                document.getElementById("openingLine").textContent =
+                    openingLines[Math.floor(Math.random() * openingLines.length)];
+                
+                // Fix iOS Safari input focus issues
+                const allInputs = document.querySelectorAll('input, textarea');
+                allInputs.forEach(input => {
+                    input.addEventListener('focus', function() {
+                        setTimeout(() => {
+                            this.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }, 300);
+                    });
                 });
-                
-                if (response.ok) {
-                    messageResult.innerHTML = '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
-                    messageInput.value = '';
-                    setTimeout(() => {
-                        closeModal('messageModal');
-                        messageResult.innerHTML = '';
-                    }, 3000);
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+            });
+
+            // Clever roasts
+            const roasts = [
+                'Claims she\'s "not photogenic"...But looks like a Disney princess in every single photo.',
+                "Can roast you with kindness. Her sarcasm is soft, but it burns.",
+                "She's not bossy. She just knows better than everyone else.",
+                "Has the unique ability to make everyone feel special, while maintaining her mystery.",
+                "Could rule the world but decides to let others have their moment.",
+                "Makes overthinking look elegant. It's her superpower."
+            ];
+
+            let roastIndex = 0;
+            generateRoast();
+
+            function generateRoast() {
+                document.getElementById("currentRoast").textContent =
+                    roasts[roastIndex];
+                roastIndex = (roastIndex + 1) % roasts.length;
             }
-        });
-        
-        // Utility functions
-        function openModal(modalId) {
-            if (modalId === 'fortuneModal') generateFortune();
-            document.getElementById(modalId).style.display = 'block';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            if (modalId === 'messageModal') {
-                document.getElementById('messageResult').innerHTML = '';
+
+            // Enhanced fortune telling
+            function generateFortune() {
+                const fortunes = [
+                    "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
+                    "A mysterious person still wants your genes.",
+                    "You'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
+                    "This year's gift? Another reason to say 'boys are dumb'.",
+                    "Your future holds many adventures, with the most exciting ones coming from unexpected places.",
+                    "Soon you'll discover a talent you didn't know you had. Use it wisely and with much sarcasm."
+                ];
+
+                document.getElementById("fortuneText").textContent =
+                    fortunes[Math.floor(Math.random() * fortunes.length)];
             }
-        }
-        
-        function showMessage(text) {
-            const message = document.createElement('div');
-            message.textContent = text;
-            message.className = "fixed top-6 left-4 right-4 glass-strong text-white p-6 rounded-2xl text-center cute-shadow handwritten text-lg";
-            message.style.zIndex = "1001";
+
+            // Sophisticated age calculator
+            function calculateAge() {
+                const birthYear = parseInt(document.getElementById("birthYear").value);
+                if (!birthYear) return;
+
+                const age = new Date().getFullYear() - birthYear;
+
+                const responses = [
+                    `${age} years of mastering the art of ignoring people... and looking fabulous doing it.`,
+                    `${age} years old and still dodging emotional attachment like it's a spam call.`,
+                    `${age} candles on the cake. One for each time someone told you you're intimidating and you took it as a compliment.`,
+                    `${age} years of proving that age is just a number, but attitude is everything.`,
+                    `${age} incredible trips around the sun, and somehow you're more radiant than ever.`
+                ];
+
+                document.getElementById("ageResult").textContent =
+                    responses[Math.floor(Math.random() * responses.length)];
+            }
+
+            // Candle wishes
+            function blowCandles() {
+                const wishes = [
+                    "You wished for honesty, so here it is: Someone's crushing hard and hiding it behind sarcastic code.",
+                    "Wish granted: You now officially have the power to scare men.",
+                    "Your wish to be left alone has been granted. Except by me. Obviously.",
+                    "The Universe considered your wish for a quiet life… then muted everyone around you. Including me. Rude.",
+                    "Plot twist: Someone already wished you'd say yes to giving them your genes. Again.",
+                    "Wish processing... please wait... ah yes! You're getting everything you deserve this year: success, joy, and plenty of reasons to laugh."
+                ];
+
+                showMessage(wishes[Math.floor(Math.random() * wishes.length)]);
+            }
+
+            // Create a separate modal for photos
+            function takePhoto() {
+                const captions = [
+                    "📸 *Click* Perfect! You look like trouble... the good kind.",
+                    "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
+                    "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
+                    "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
+                    "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people.",
+                    "📸 *Captured* This moment with you is now eternally frozen in digital time."
+                ];
+
+                const caption = captions[Math.floor(Math.random() * captions.length)];
+                showMessage(caption);
+            }
             
-            document.body.appendChild(message);
-            setTimeout(() => message.remove(), 4000);
-        }
-        
-        // Close modals on outside click
-        window.onclick = (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-                if (e.target.id === 'messageModal') {
-                    document.getElementById('messageResult').innerHTML = '';
+            function createConfetti() {
+                // Clear any previous confetti and messages
+                document.getElementById("confetti-container").innerHTML = "";
+
+                // Remove any existing messages
+                const existingMessages = document.querySelectorAll(".message-popup");
+                existingMessages.forEach((msg) => msg.remove());
+
+                // Better confetti with improved animation
+                const container = document.getElementById("confetti-container");
+                const colors = [
+                    "#ff9ff3",
+                    "#feca57",
+                    "#ff6b6b",
+                    "#48dbfb",
+                    "#1dd1a1",
+                    "#00d2d3",
+                    "#54a0ff",
+                    "#5f27cd",
+                ];
+
+                // More varied confetti (250 pieces for better performance)
+                for (let i = 0; i < 250; i++) {
+                    const confetti = document.createElement("div");
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const shape =
+                        Math.random() > 0.7
+                            ? "circle"
+                            : Math.random() > 0.5
+                            ? "rect"
+                            : "star";
+                    const size = Math.random() * 12 + 4;
+
+                    // Create different shapes
+                    if (shape === "star") {
+                        confetti.innerHTML = "★";
+                        confetti.style.color = color;
+                        confetti.style.fontSize = `${size * 1.5}px`;
+                    } else {
+                        confetti.style.width = `${size}px`;
+                        confetti.style.height = `${
+                            shape === "circle" ? size : Math.random() * 8 + 4
+                        }px`;
+                        confetti.style.background = color;
+                        confetti.style.borderRadius = `${
+                            shape === "circle" ? "50%" : Math.random() > 0.5 ? "2px" : "0"
+                        }`;
+                    }
+
+                    // Better animation with varying speeds and rotation
+                    const duration = Math.random() * 3 + 2;
+                    const rotateDir = Math.random() > 0.5 ? 1 : -1;
+                    
+                    confetti.className = "hw-accelerated";
+                    confetti.style.cssText += `
+                        position: absolute;
+                        top: -5%;
+                        left: ${Math.random() * 100}%;
+                        transform: rotate(${Math.random() * 360}deg);
+                        opacity: ${Math.random() * 0.7 + 0.3};
+                        transition: all ${duration}s cubic-bezier(0.215, 0.61, 0.355, 1);
+                        box-shadow: 0 0 ${Math.random() * 10 + 5}px ${color}40;
+                        z-index: 1000;
+                        will-change: transform, opacity;
+                `;
+
+                    container.appendChild(confetti);
+
+                    // Add a small delay for each confetti for a more natural falling effect
+                    setTimeout(() => {
+                        confetti.style.top = `${95 + Math.random() * 10}%`;
+                        confetti.style.left = `${
+                            parseFloat(confetti.style.left) + (Math.random() * 40 - 20)
+                        }%`;
+                        confetti.style.transform = `rotate(${
+                            rotateDir * (Math.random() * 960 + 360)
+                        }deg)`;
+                        confetti.style.opacity = "0";
+                    }, Math.random() * 300);
+
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }
+
+                // Add 3D falling gold stars - fewer for better performance
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const star = document.createElement("div");
+                        star.innerHTML = "⭐";
+                        star.className = "hw-accelerated";
+                        star.style.cssText = `
+                                position: fixed;
+                                font-size: ${Math.random() * 30 + 20}px;
+                                left: ${Math.random() * 100}vw;
+                                top: -50px;
+                                opacity: 0;
+                                z-index: 1001;
+                                text-shadow: 0 0 10px gold;
+                                will-change: transform, opacity;
+                                animation: fallingStar ${Math.random() * 2 + 3}s forwards ease-in;
+                        `;
+                        container.appendChild(star);
+
+                        setTimeout(() => star.remove(), 5000);
+                    }, i * 100);
+                }
+
+                // Add a style for the falling star animation if it doesn't exist
+                if (!document.querySelector("#fallingStar-style")) {
+                    const style = document.createElement("style");
+                    style.id = "fallingStar-style";
+                    style.textContent = `
+                        @-webkit-keyframes fallingStar {
+                                0% { -webkit-transform: translateY(0) rotate(0deg) scale(0); transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
+                                10% { opacity: 1; }
+                                100% { -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5); transform: translateY(100vh) rotate(360deg) scale(0.5); opacity: 0; }
+                        }
+                        @keyframes fallingStar {
+                                0% { -webkit-transform: translateY(0) rotate(0deg) scale(0); transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
+                                10% { opacity: 1; }
+                                100% { -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5); transform: translateY(100vh) rotate(360deg) scale(0.5); opacity: 0; }
+                        }
+                `;
+                    document.head.appendChild(style);
+                }
+
+                // Add a gentle flash
+                const flash = document.createElement("div");
+                flash.style.cssText = `
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+                opacity: 0;
+                z-index: 999;
+                pointer-events: none;
+                animation: gentleFlash 1.5s ease-out forwards;
+                -webkit-animation: gentleFlash 1.5s ease-out forwards;
+                will-change: opacity;
+        `;
+                document.body.appendChild(flash);
+
+                // Add a style for the flash animation if it doesn't exist
+                if (!document.querySelector("#gentleFlash-style")) {
+                    const style = document.createElement("style");
+                    style.id = "gentleFlash-style";
+                    style.textContent = `
+                        @-webkit-keyframes gentleFlash {
+                                0% { opacity: 0; }
+                                30% { opacity: 0.7; }
+                                100% { opacity: 0; }
+                        }
+                        @keyframes gentleFlash {
+                                0% { opacity: 0; }
+                                30% { opacity: 0.7; }
+                                100% { opacity: 0; }
+                        }
+                `;
+                    document.head.appendChild(style);
+                }
+
+                setTimeout(() => flash.remove(), 1500);
+
+                // Try to play a celebration sound
+                try {
+                    const audio = new Audio("https://assets.mixkit.co/active_storage/sfx/1927/1927-preview.mp3");
+                    audio.volume = 0.3;
+                    const playPromise = audio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log("Auto-play was prevented:", error);
+                            // Create a play button
+                            const soundButton = document.createElement("button");
+                            soundButton.textContent = "🔊 Play Sound";
+                            soundButton.className = "fixed bottom-4 right-4 z-[1002] bg-white/80 text-purple-700 px-4 py-2 rounded-full shadow-lg";
+                            soundButton.onclick = function() {
+                                audio.play();
+                                this.remove();
+                            };
+                            document.body.appendChild(soundButton);
+                            
+                            // Auto-remove after 5 seconds
+                            setTimeout(() => soundButton.remove(), 5000);
+                        });
+                    }
+                } catch (e) {
+                    console.log("Sound couldn't be loaded:", e);
+                }
+
+                // Show celebratory message
+                setTimeout(() => {
+                    showMessage("🥳 Happy Birthday Queen! Have an incredible day! 🎉");
+                }, 500);
+            }
+
+            // Message form handling
+            document
+                .getElementById("messageForm")
+                .addEventListener("submit", async function (e) {
+                    e.preventDefault();
+
+                    const messageInput = document.getElementById("messageInput");
+                    const messageResult = document.getElementById("messageResult");
+                    const message = messageInput.value.trim();
+
+                    if (!message) {
+                        messageResult.innerHTML =
+                            '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
+                        return;
+                    }
+
+                    // Show loading state
+                    messageResult.innerHTML =
+                        '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
+
+                    try {
+                        const formData = new FormData();
+                        formData.append("name", "Imane");
+                        formData.append("email", "birthday@example.com");
+                        formData.append("message", message);
+
+                        const response = await fetch(
+                            "https://oussamaapi.azizbenmallouk.com/api/messages",
+                            {
+                                method: "POST",
+                                body: formData,
+                            }
+                        );
+
+                        if (response.ok) {
+                            messageResult.innerHTML =
+                                '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
+                            messageInput.value = "";
+                            setTimeout(() => {
+                                closeModal("messageModal");
+                                messageResult.innerHTML = "";
+                            }, 3000);
+                        } else {
+                            throw new Error("Failed to send message");
+                        }
+                    } catch (error) {
+                        messageResult.innerHTML =
+                            '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+                    }
+                });
+
+            // Utility functions
+            function openModal(modalId) {
+                if (modalId === "fortuneModal") generateFortune();
+                document.getElementById(modalId).style.display = "block";
+                document.body.style.overflow = "hidden"; // Prevent background scrolling
+                
+                // iOS specific fix
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    document.body.style.position = "fixed";
+                    document.body.style.width = "100%";
+                    document.body.style.top = `-${window.scrollY}px`;
                 }
             }
-        }
-        
-        // Add some sparkle effects on page load
-        setTimeout(() => {
-            createConfetti();
-        }, 1000);
-    </script>
-</body>
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = "none";
+                
+                // iOS specific fix
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    const scrollY = document.body.style.top;
+                    document.body.style.position = "";
+                    document.body.style.width = "";
+                    document.body.style.top = "";
+                    window.scrollTo(0, parseInt(scrollY || "0") * -1);
+                }
+                
+                document.body.style.overflow = ""; // Restore scrolling
+                
+                if (modalId === "messageModal") {
+                    document.getElementById("messageResult").innerHTML = "";
+                }
+            }
+            
+            function showMessage(text) {
+                // Remove any existing messages first
+                const existingMessages = document.querySelectorAll(".message-popup");
+                existingMessages.forEach((msg) => {
+                    msg.style.opacity = "0";
+                    msg.style.transform = "translateY(-30px)";
+                    setTimeout(() => msg.remove(), 300);
+                });
+
+                const message = document.createElement("div");
+                message.textContent = text;
+                message.className = "fixed top-6 left-4 right-4 p-6 rounded-2xl text-center text-lg message-popup hw-accelerated";
+                message.style.cssText = `
+                background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(236, 72, 153, 0.95));
+                color: white;
+                box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3), 0 8px 30px rgba(186, 85, 211, 0.4);
+                z-index: 1001;
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                font-family: 'Caveat', cursive;
+                font-size: 1.3rem;
+                transform: translateY(-10px);
+                -webkit-transform: translateY(-10px);
+                opacity: 0;
+                will-change: transform, opacity;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+        `;
+
+                document.body.appendChild(message);
+
+                // Start visible after a brief delay
+                setTimeout(() => {
+                    message.style.transition = "all 0.5s ease";
+                    message.style.webkitTransition = "all 0.5s ease";
+                    message.style.opacity = "1";
+                    message.style.transform = "translateY(0)";
+                    message.style.webkitTransform = "translateY(0)";
+                }, 100);
+
+                // Increase timeout to 8 seconds before fading out
+                setTimeout(() => {
+                    message.style.opacity = "0";
+                    message.style.transform = "translateY(-20px)";
+                    message.style.webkitTransform = "translateY(-20px)";
+
+                    // Remove after animation completes
+                    setTimeout(() => message.remove(), 500);
+                }, 8000);
+            }
+
+            // Enable passive touch listeners for better scrolling
+            document.addEventListener("touchstart", function(){}, {passive: true});
+        </script>
+    </body>
 </html>
