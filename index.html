@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imane's Birthday Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * { font-family: 'Inter', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-shadow {
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtle-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .subtle-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+        }
+        
+        .dot-pattern {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .confession-text {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 dot-pattern">
+    
+    <!-- Age Modal -->
+    <div id="ageModal" class="modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="glass rounded-2xl p-6 max-w-md w-full">
+                <h3 class="text-2xl font-bold mb-4 text-white text-center">Reality Check Time ⚡</h3>
+                <p class="text-gray-300 text-center mb-4">Birth year? (I promise not to judge... much)</p>
+                <input type="number" id="birthYear" placeholder="e.g., 1995" 
+                       class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:border-purple-400 focus:outline-none mb-4" 
+                       min="1900" max="2024">
+                <div class="flex gap-3">
+                    <button onclick="calculateAge()" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-medium subtle-hover">
+                        Hit Me With It
+                    </button>
+                    <button onclick="closeModal('ageModal')" class="flex-1 bg-white/20 text-white py-3 rounded-lg font-medium subtle-hover">
+                        Nevermind
+                    </button>
+                </div>
+                <div id="ageResult" class="mt-4 text-center font-medium text-white"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fortune Modal -->
+    <div id="fortuneModal" class="modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="glass rounded-2xl p-6 max-w-md w-full">
+                <h3 class="text-2xl font-bold mb-4 text-white text-center">Your Birthday Oracle 🔮</h3>
+                <div id="fortuneText" class="text-center mb-6 text-lg text-gray-300 leading-relaxed"></div>
+                <button onclick="closeModal('fortuneModal')" class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-lg font-medium subtle-hover">
+                    I Accept My Fate
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confession Modal -->
+    <div id="confessionModal" class="modal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="glass rounded-2xl p-6 max-w-md w-full glow">
+                <h3 class="text-2xl font-bold mb-4 text-white text-center">Plot Twist 💕</h3>
+                <div class="text-center mb-6">
+                    <p class="confession-text text-lg font-medium mb-3">
+                        Okay, confession time...
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                 Beneath all this sarcasm lies my very un-sarcastic truth: you’re incredible, and honestly, it’s terrifying how much I like you.  
+          So... Happy Birthday to the amazing human who’s stolen my defenses. 🥺💖
+                    </p>
+                </div>
+                <button onclick="closeModal('confessionModal')" class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg font-medium subtle-hover">
+                    My Heart Can't Handle This
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mx-auto px-4 py-8 max-w-md">
+        
+        <!-- Main Card -->
+        <div class="glass rounded-3xl overflow-hidden card-shadow">
+            
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-center relative">
+                <div class="floating absolute top-4 right-4 text-2xl">💫</div>
+                <h1 class="text-white text-3xl font-bold mb-2">Happy Birthday</h1>
+                <h2 class="text-white/90 text-4xl font-light">Imane</h2>
+                <div class="mt-3 text-white/80 text-sm">
+                    Crafted with questionable intentions 😏
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="p-6 space-y-6">
+                
+                <!-- Opening Line -->
+                <div class="text-center">
+                    <p id="openingLine" class="text-gray-300 text-lg leading-relaxed"></p>
+                </div>
+                
+                <!-- Cake Section -->
+                <div class="text-center">
+                    <div id="cake" class="inline-block cursor-pointer subtle-hover p-4" onclick="blowCandles()">
+                        <div class="text-6xl mb-2">🎂</div>
+                        <div class="text-gray-400 text-sm">Make a wish (I dare you)</div>
+                    </div>
+                </div>
+                
+                <!-- Facts Section -->
+                <div class="glass rounded-2xl p-4">
+                    <h3 class="text-white font-semibold mb-3 text-center">Facts About Imane</h3>
+                    <div id="roastBox" class="text-center">
+                        <p id="currentRoast" class="text-gray-300 mb-4 leading-relaxed"></p>
+                        <button onclick="generateRoast()" class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg font-medium subtle-hover">
+            Show Me Another Fact
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Action Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="createConfetti()" class="glass p-4 rounded-xl text-center subtle-hover">
+                        <div class="text-2xl mb-1">🎊</div>
+                        <div class="text-white text-sm font-medium">Celebrate</div>
+                    </button>
+                    
+                    <button onclick="openModal('fortuneModal')" class="glass p-4 rounded-xl text-center subtle-hover">
+                        <div class="text-2xl mb-1">🔮</div>
+                        <div class="text-white text-sm font-medium">Fortune</div>
+                    </button>
+                    
+                    <button onclick="openModal('ageModal')" class="glass p-4 rounded-xl text-center subtle-hover">
+                        <div class="text-2xl mb-1">📊</div>
+                        <div class="text-white text-sm font-medium">Age Check</div>
+                    </button>
+                    
+                    <button onclick="takePhoto()" class="glass p-4 rounded-xl text-center subtle-hover">
+                        <div class="text-2xl mb-1">📸</div>
+                        <div class="text-white text-sm font-medium">Memories</div>
+                    </button>
+                </div>
+                
+                <div id="photoResult" class="text-center text-gray-400 text-sm"></div>
+                
+                <!-- Secret Button -->
+                <div class="text-center pt-4">
+                    <button onclick="openModal('confessionModal')" class="text-pink-400 hover:text-pink-300 text-sm underline opacity-70 hover:opacity-100 transition-opacity">
+                        There's something I need to tell you...
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="glass p-4 text-center border-t border-white/10">
+                <p class="text-gray-400 text-sm">From your favorite pain in the ass</p>
+                <p class="text-white font-medium">— Someone who cares more than they admit 💕</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-50"></div>
+
+    <script>
+        // Sophisticated opening lines
+        const openingLines = [
+              "Once upon a time, a legend named Imane was born… and the world’s been better ever since."
+        ];
+        
+        // Display random opening line
+        document.getElementById('openingLine').textContent = openingLines[Math.floor(Math.random() * openingLines.length)];
+        
+        // Clever roasts
+        const roasts = [
+            "Claims she’s “not photogenic”...But looks like a Disney princess in every single photo.",
+            "Can roast you with kindness.Her sarcasm is soft, but it burns.",
+            "She’s not bossy.She just knows better than everyone else.",
+        ];
+        
+        let roastIndex = 0;
+        generateRoast();
+        
+        function generateRoast() {
+            document.getElementById('currentRoast').textContent = roasts[roastIndex];
+            roastIndex = (roastIndex + 1) % roasts.length;
+        }
+        
+        // Enhanced fortune telling
+        function generateFortune() {
+            const fortunes = [
+                "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
+                "A mysterious person still wants your genes.",
+                "you'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
+                "This years gift? Another reason to say 'boys are dumb'.",
+            ];
+            
+            document.getElementById('fortuneText').textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
+        }
+        
+        // Sophisticated age calculator
+        function calculateAge() {
+            const birthYear = parseInt(document.getElementById('birthYear').value);
+            if (!birthYear) return;
+            
+            const age = new Date().getFullYear() - birthYear;
+            
+            const responses = [
+                `${age} years of mastering the art of ignoring people... and looking fabulous doing it.`,   
+                    `${age} years old and still dodging emotional attachment like it's a spam call.`,
+                        `${age} candles on the cake. One for each time someone told you you're intimidating and you took it as a compliment.`
+
+            ];
+            
+            document.getElementById('ageResult').textContent = responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        // Candle wishes
+        function blowCandles() {
+            const wishes = [
+                "You wished for honesty, so here it is: Someone’s crushing hard and hiding it behind sarcastic code.",
+                "Wish granted: You now officially have the power to scare men.",
+                "Your wish to be left alone has been granted. Except by me. Obviously.",
+                "The Universe considered your wish for a quiet life… then muted everyone around you. Including me. Rude.",
+                "Plot twist: Someone already wished you’d say yes to giving them your genes. Again.",
+            ];
+            
+            showMessage(wishes[Math.floor(Math.random() * wishes.length)]);
+        }
+        
+        // Photo captions
+        function takePhoto() {
+            const captions = [
+                "📸 *Click* Perfect! You look like trouble... the good kind.",
+                "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
+                "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
+                "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
+                "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people."
+            ];
+            
+            document.getElementById('photoResult').textContent = captions[Math.floor(Math.random() * captions.length)];
+        }
+        
+        // Confetti (simplified)
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    background: hsl(${Math.random() * 360}, 70%, 60%);
+                    top: -10px;
+                    left: ${Math.random() * 100}%;
+                    transform: rotate(${Math.random() * 360}deg);
+                    transition: all 3s cubic-bezier(0.23, 1, 0.32, 1);
+                `;
+                
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.style.top = '100vh';
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.opacity = '0';
+                }, 10);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+        
+        // Utility functions
+        function openModal(modalId) {
+            if (modalId === 'fortuneModal') generateFortune();
+            document.getElementById(modalId).style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function showMessage(text) {
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.className = "fixed top-4 left-4 right-4 glass text-white p-4 rounded-lg text-center";
+            message.style.zIndex = "1001";
+            
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 3000);
+        }
+        
+        // Close modals on outside click
+        window.onclick = (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
