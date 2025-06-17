@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#291b3e" />
     <title>Imane</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -724,7 +724,8 @@
             </div>
             <div class="flex gap-3">
               <button
-                type="submit"
+                type="button"
+                onclick="submitMessageForm()"
                 class="flex-1 cute-button text-white py-3 rounded-xl font-semibold subtle-hover text-base"
               >
                 Send Message 💌
@@ -925,7 +926,7 @@
 
         // Sophisticated opening lines
         const openingLines = [
-          "Once upon a time, a legend named Imane was born… and the world's been better ever since."
+          "Once upon a time, a legend named Imane was born… and the world's been better ever since.",
         ];
 
         // Display random opening line
@@ -950,7 +951,7 @@
       const roasts = [
         'Claims she\'s "not photogenic"...But looks like a Disney princess in every single photo.',
         "Can roast you with kindness. Her sarcasm is soft, but it burns.",
-        "She's not bossy. She just knows better than everyone else."
+        "She's not bossy. She just knows better than everyone else.",
       ];
 
       let roastIndex = 0;
@@ -968,7 +969,7 @@
           "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
           "A mysterious person still wants your genes.",
           "You'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
-          "This year's gift? Another reason to say 'boys are dumb'."
+          "This year's gift? Another reason to say 'boys are dumb'.",
         ];
 
         document.getElementById("fortuneText").textContent =
@@ -1015,8 +1016,8 @@
           "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
           "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
           "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
-          "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people."
-        ]
+          "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people.",
+        ];
         const caption = captions[Math.floor(Math.random() * captions.length)];
         showMessage(caption);
       }
@@ -1238,49 +1239,79 @@
         }, 500);
       }
 
+      function submitMessageForm() {
+        // Create a synthetic event
+        const event = new Event("submit", {
+          bubbles: true,
+          cancelable: true,
+        });
+
+        // Dispatch it
+        document.getElementById("messageForm").dispatchEvent(event);
+      }
+
       // Message form handling
-     document.getElementById("messageForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  
-  const messageInput = document.getElementById("messageInput");
-  const messageResult = document.getElementById("messageResult");
-  const message = messageInput.value.trim();
-  
-  if (!message) {
-    messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
-    return false;  // Important: return false to prevent form submission
-  }
-  
-  // Show loading state
-  messageResult.innerHTML = '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
-  
-  const formData = new FormData();
-  formData.append("name", "Imane");
-  formData.append("email", "birthday@example.com");
-  formData.append("message", message);
-  
-  fetch("https://oussamaapi.azizbenmallouk.com/api/messages", {
-    method: "POST",
-    body: formData
-  })
-  .then(response => {
-    if (response.ok) {
-      messageResult.innerHTML = '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
-      messageInput.value = "";
-      setTimeout(() => {
-        closeModal("messageModal");
-        messageResult.innerHTML = "";
-      }, 3000);
-    } else {
-      throw new Error("Failed to send message");
-    }
-  })
-  .catch(error => {
-    messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
-  });
-  
-  return false;  // Important: return false to prevent form submission
-});
+      document.addEventListener("DOMContentLoaded", function () {
+        const messageForm = document.getElementById("messageForm");
+        if (!messageForm) return;
+
+        messageForm.addEventListener("submit", function (event) {
+          // This stops the form from submitting normally
+          event.preventDefault();
+
+          // Get form elements
+          const messageInput = document.getElementById("messageInput");
+          const messageResult = document.getElementById("messageResult");
+          const message = messageInput.value.trim();
+
+          // Validate the form
+          if (!message) {
+            messageResult.innerHTML =
+              '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
+            return;
+          }
+
+          // Show loading state
+          messageResult.innerHTML =
+            '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
+
+          // Create form data manually
+          const formData = new FormData();
+          formData.append("name", "Imane");
+          formData.append("email", "birthday@example.com");
+          formData.append("message", message);
+
+          // Send the data using XMLHttpRequest instead of fetch (more reliable on older iOS)
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "POST",
+            "https://oussamaapi.azizbenmallouk.com/api/messages",
+            true
+          );
+
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              messageResult.innerHTML =
+                '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
+              messageInput.value = "";
+              setTimeout(function () {
+                closeModal("messageModal");
+                messageResult.innerHTML = "";
+              }, 3000);
+            } else {
+              messageResult.innerHTML =
+                '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+            }
+          };
+
+          xhr.onerror = function () {
+            messageResult.innerHTML =
+              '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+          };
+
+          xhr.send(formData);
+        });
+      });
 
       function openModal(modalId) {
         if (modalId === "fortuneModal") generateFortune();
