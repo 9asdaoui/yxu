@@ -1239,55 +1239,48 @@
       }
 
       // Message form handling
-      document
-        .getElementById("messageForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const messageInput = document.getElementById("messageInput");
-          const messageResult = document.getElementById("messageResult");
-          const message = messageInput.value.trim();
-
-          if (!message) {
-            messageResult.innerHTML =
-              '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
-            return;
-          }
-
-          // Show loading state
-          messageResult.innerHTML =
-            '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
-
-          try {
-            const formData = new FormData();
-            formData.append("name", "Imane");
-            formData.append("email", "birthday@example.com");
-            formData.append("message", message);
-
-            const response =  fetch(
-              "https://oussamaapi.azizbenmallouk.com/api/messages",
-              {
-                method: "POST",
-                body: formData,
-              }
-            );
-
-            if (response.ok) {
-              messageResult.innerHTML =
-                '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
-              messageInput.value = "";
-              setTimeout(() => {
-                closeModal("messageModal");
-                messageResult.innerHTML = "";
-              }, 3000);
-            } else {
-              throw new Error("Failed to send message");
-            }
-          } catch (error) {
-            messageResult.innerHTML =
-              '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
-          }
-        });
+     document.getElementById("messageForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const messageInput = document.getElementById("messageInput");
+  const messageResult = document.getElementById("messageResult");
+  const message = messageInput.value.trim();
+  
+  if (!message) {
+    messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
+    return false;  // Important: return false to prevent form submission
+  }
+  
+  // Show loading state
+  messageResult.innerHTML = '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
+  
+  const formData = new FormData();
+  formData.append("name", "Imane");
+  formData.append("email", "birthday@example.com");
+  formData.append("message", message);
+  
+  fetch("https://oussamaapi.azizbenmallouk.com/api/messages", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => {
+    if (response.ok) {
+      messageResult.innerHTML = '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
+      messageInput.value = "";
+      setTimeout(() => {
+        closeModal("messageModal");
+        messageResult.innerHTML = "";
+      }, 3000);
+    } else {
+      throw new Error("Failed to send message");
+    }
+  })
+  .catch(error => {
+    messageResult.innerHTML = '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+  });
+  
+  return false;  // Important: return false to prevent form submission
+});
 
       function openModal(modalId) {
         if (modalId === "fortuneModal") generateFortune();
