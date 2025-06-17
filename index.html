@@ -1,1146 +1,1167 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-        />
-        <title>Imane</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            * {
-                font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-                -webkit-tap-highlight-color: transparent;
-                font-size: 95%; /* Slightly smaller font size */
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#291b3e" />
+    <title>Imane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        font-size: 95%; /* Slightly smaller font size */
+      }
 
-            .handwritten {
-                font-family: "Caveat", cursive;
-            }
+      .handwritten {
+        font-family: "Caveat", cursive;
+      }
 
-            .glass {
-                background: rgba(255, 255, 255, 0.15);
-                -webkit-backdrop-filter: blur(15px);
-                backdrop-filter: blur(15px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-            }
+      .glass {
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
 
-            .glass-strong {
-                background: rgba(255, 255, 255, 0.9);
-                -webkit-backdrop-filter: blur(20px);
-                backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                color: #333;
-                border-radius: 1.25rem; /* Slightly smaller */
-                -webkit-border-radius: 1.25rem;
-            }
+      .glass-strong {
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #333;
+        border-radius: 1.25rem; /* Slightly smaller */
+        -webkit-border-radius: 1.25rem;
+      }
 
-            .glass-strong h3 {
-                color: #333 !important;
-            }
+      .glass-strong h3 {
+        color: #333 !important;
+      }
 
-            .glass-strong .text-gray-300 {
-                color: #555 !important;
-            }
+      .glass-strong .text-gray-300 {
+        color: #555 !important;
+      }
 
-            .glass-strong .text-white {
-                color: #333 !important;
-            }
+      .glass-strong .text-white {
+        color: #333 !important;
+      }
 
-            .gradient-text {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-fill-color: transparent;
-            }
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+      }
 
-            .card-shadow {
-                -webkit-box-shadow: 0 7px 28px rgba(0, 0, 0, 0.12),
-                    0 2px 14px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
-                box-shadow: 0 7px 28px rgba(0, 0, 0, 0.12),
-                    0 2px 14px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            }
+      .card-shadow {
+        -webkit-box-shadow: 0 7px 28px rgba(0, 0, 0, 0.12),
+          0 2px 14px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 7px 28px rgba(0, 0, 0, 0.12),
+          0 2px 14px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      }
 
-            .cute-shadow {
-                -webkit-box-shadow: 0 3px 16px rgba(255, 182, 193, 0.3),
-                    0 2px 8px rgba(186, 85, 211, 0.2);
-                box-shadow: 0 3px 16px rgba(255, 182, 193, 0.3),
-                    0 2px 8px rgba(186, 85, 211, 0.2);
-            }
+      .cute-shadow {
+        -webkit-box-shadow: 0 3px 16px rgba(255, 182, 193, 0.3),
+          0 2px 8px rgba(186, 85, 211, 0.2);
+        box-shadow: 0 3px 16px rgba(255, 182, 193, 0.3),
+          0 2px 8px rgba(186, 85, 211, 0.2);
+      }
 
-            .subtle-hover {
-                -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
+      .subtle-hover {
+        -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            @media (hover: hover) {
-                .subtle-hover:hover {
-                    -webkit-transform: translateY(-2px) scale(1.02);
-                    transform: translateY(-2px) scale(1.02);
-                    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                }
+      @media (hover: hover) {
+        .subtle-hover:hover {
+          -webkit-transform: translateY(-2px) scale(1.02);
+          transform: translateY(-2px) scale(1.02);
+          -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
 
-                .bounce-hover:hover {
-                    animation: bounce 0.6s ease-in-out;
-                    -webkit-animation: bounce 0.6s ease-in-out;
-                }
-            }
+        .bounce-hover:hover {
+          animation: bounce 0.6s ease-in-out;
+          -webkit-animation: bounce 0.6s ease-in-out;
+        }
+      }
 
-            @-webkit-keyframes bounce {
-                0%,
-                20%,
-                60%,
-                100% {
-                    -webkit-transform: translateY(0);
-                    transform: translateY(0);
-                }
-                40% {
-                    -webkit-transform: translateY(-8px);
-                    transform: translateY(-8px);
-                }
-                80% {
-                    -webkit-transform: translateY(-4px);
-                    transform: translateY(-4px);
-                }
-            }
+      @-webkit-keyframes bounce {
+        0%,
+        20%,
+        60%,
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+        40% {
+          -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+        }
+        80% {
+          -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+        }
+      }
 
-            @keyframes bounce {
-                0%,
-                20%,
-                60%,
-                100% {
-                    -webkit-transform: translateY(0);
-                    transform: translateY(0);
-                }
-                40% {
-                    -webkit-transform: translateY(-8px);
-                    transform: translateY(-8px);
-                }
-                80% {
-                    -webkit-transform: translateY(-4px);
-                    transform: translateY(-4px);
-                }
-            }
+      @keyframes bounce {
+        0%,
+        20%,
+        60%,
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+        40% {
+          -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+        }
+        80% {
+          -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+        }
+      }
 
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1000;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: rgba(0, 0, 0, 0.9);
-                -webkit-backdrop-filter: blur(15px);
-                backdrop-filter: blur(15px);
-            }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.9);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+      }
 
-            .dot-pattern {
-                background: linear-gradient(to bottom right, #291b3e, #483475, #3e1f47);
-                background-image: radial-gradient(
-                        circle at 15px 15px,
-                        rgba(255, 255, 255, 0.1) 2px,
-                        transparent 0
-                    ),
-                    radial-gradient(
-                        circle at 45px 45px,
-                        rgba(255, 255, 255, 0.05) 3px,
-                        transparent 0
-                    );
-                background-size: 60px 60px;
-                position: relative;
-            }
+      .dot-pattern {
+        background: linear-gradient(to bottom right, #291b3e, #483475, #3e1f47);
+        background-image: radial-gradient(
+            circle at 15px 15px,
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 0
+          ),
+          radial-gradient(
+            circle at 45px 45px,
+            rgba(255, 255, 255, 0.05) 3px,
+            transparent 0
+          );
+        background-size: 60px 60px;
+        position: relative;
+      }
 
-            .dot-pattern::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-                z-index: 0;
-            }
+      .dot-pattern::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+        z-index: 0;
+      }
 
-            .floating {
-                -webkit-animation: float 6s ease-in-out infinite;
-                animation: float 6s ease-in-out infinite;
-                will-change: transform;
-            }
+      .floating {
+        -webkit-animation: float 6s ease-in-out infinite;
+        animation: float 6s ease-in-out infinite;
+        will-change: transform;
+      }
 
-            .floating-delayed {
-                -webkit-animation: float 6s ease-in-out infinite 2s;
-                animation: float 6s ease-in-out infinite 2s;
-                will-change: transform;
-            }
+      .floating-delayed {
+        -webkit-animation: float 6s ease-in-out infinite 2s;
+        animation: float 6s ease-in-out infinite 2s;
+        will-change: transform;
+      }
 
-            @-webkit-keyframes float {
-                0%,
-                100% {
-                    -webkit-transform: translateY(0px) rotate(0deg);
-                    transform: translateY(0px) rotate(0deg);
-                }
-                50% {
-                    -webkit-transform: translateY(-12px) rotate(5deg);
-                    transform: translateY(-12px) rotate(5deg);
-                }
-            }
+      @-webkit-keyframes float {
+        0%,
+        100% {
+          -webkit-transform: translateY(0px) rotate(0deg);
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          -webkit-transform: translateY(-12px) rotate(5deg);
+          transform: translateY(-12px) rotate(5deg);
+        }
+      }
 
-            @keyframes float {
-                0%,
-                100% {
-                    -webkit-transform: translateY(0px) rotate(0deg);
-                    transform: translateY(0px) rotate(0deg);
-                }
-                50% {
-                    -webkit-transform: translateY(-12px) rotate(5deg);
-                    transform: translateY(-12px) rotate(5deg);
-                }
-            }
+      @keyframes float {
+        0%,
+        100% {
+          -webkit-transform: translateY(0px) rotate(0deg);
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          -webkit-transform: translateY(-12px) rotate(5deg);
+          transform: translateY(-12px) rotate(5deg);
+        }
+      }
 
-            .pulse-glow {
-                -webkit-animation: pulse-glow 2s ease-in-out infinite alternate;
-                animation: pulse-glow 2s ease-in-out infinite alternate;
-            }
+      .pulse-glow {
+        -webkit-animation: pulse-glow 2s ease-in-out infinite alternate;
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+      }
 
-            @-webkit-keyframes pulse-glow {
-                from {
-                    -webkit-box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
-                    box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
-                }
-                to {
-                    -webkit-box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
-                        0 0 40px rgba(186, 85, 211, 0.3);
-                    box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
-                        0 0 40px rgba(186, 85, 211, 0.3);
-                }
-            }
+      @-webkit-keyframes pulse-glow {
+        from {
+          -webkit-box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
+          box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
+        }
+        to {
+          -webkit-box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
+            0 0 40px rgba(186, 85, 211, 0.3);
+          box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
+            0 0 40px rgba(186, 85, 211, 0.3);
+        }
+      }
 
-            @keyframes pulse-glow {
-                from {
-                    -webkit-box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
-                    box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
-                }
-                to {
-                    -webkit-box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
-                        0 0 40px rgba(186, 85, 211, 0.3);
-                    box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
-                        0 0 40px rgba(186, 85, 211, 0.3);
-                }
-            }
+      @keyframes pulse-glow {
+        from {
+          -webkit-box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
+          box-shadow: 0 0 16px rgba(255, 20, 147, 0.4);
+        }
+        to {
+          -webkit-box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
+            0 0 40px rgba(186, 85, 211, 0.3);
+          box-shadow: 0 0 25px rgba(255, 20, 147, 0.6),
+            0 0 40px rgba(186, 85, 211, 0.3);
+        }
+      }
 
-            .glow {
-                -webkit-box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-                box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-            }
+      .glow {
+        -webkit-box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      }
 
-            .confession-text {
-                background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-fill-color: transparent;
-                background-size: 200% 200%;
-                -webkit-animation: gradient-shift 3s ease infinite;
-                animation: gradient-shift 3s ease infinite;
-            }
+      .confession-text {
+        background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        background-size: 200% 200%;
+        -webkit-animation: gradient-shift 3s ease infinite;
+        animation: gradient-shift 3s ease infinite;
+      }
 
-            @-webkit-keyframes gradient-shift {
-                0%,
-                100% {
-                    background-position: 0% center;
-                }
-                50% {
-                    background-position: 100% center;
-                }
-            }
+      @-webkit-keyframes gradient-shift {
+        0%,
+        100% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+      }
 
-            @keyframes gradient-shift {
-                0%,
-                100% {
-                    background-position: 0% center;
-                }
-                50% {
-                    background-position: 100% center;
-                }
-            }
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
+      }
 
-            .sparkle {
-                position: relative;
-                overflow: hidden;
-            }
+      .sparkle {
+        position: relative;
+        overflow: hidden;
+      }
 
-            .sparkle::before {
-                content: "";
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: linear-gradient(
-                    45deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.1),
-                    transparent
-                );
-                -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);
-                -webkit-animation: sparkle 3s linear infinite;
-                animation: sparkle 3s linear infinite;
-            }
+      .sparkle::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-animation: sparkle 3s linear infinite;
+        animation: sparkle 3s linear infinite;
+      }
 
-            @-webkit-keyframes sparkle {
-                0% {
-                    -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                }
-                100% {
-                    -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
-                    transform: translateX(100%) translateY(100%) rotate(45deg);
-                }
-            }
+      @-webkit-keyframes sparkle {
+        0% {
+          -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
 
-            @keyframes sparkle {
-                0% {
-                    -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                }
-                100% {
-                    -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
-                    transform: translateX(100%) translateY(100%) rotate(45deg);
-                }
-            }
+      @keyframes sparkle {
+        0% {
+          -webkit-transform: translateX(-100%) translateY(-100%) rotate(45deg);
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          -webkit-transform: translateX(100%) translateY(100%) rotate(45deg);
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
 
-            .message-success {
-                background: linear-gradient(135deg, #10b981, #059669);
-                color: white;
-                padding: 0.8rem;
-                border-radius: 0.75rem;
-                margin-top: 0.8rem;
-                text-align: center;
-                opacity: 0;
-                -webkit-transform: translateY(8px);
-                transform: translateY(8px);
-                -webkit-animation: slideIn 0.5s ease forwards;
-                animation: slideIn 0.5s ease forwards;
-            }
+      .message-success {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 0.8rem;
+        border-radius: 0.75rem;
+        margin-top: 0.8rem;
+        text-align: center;
+        opacity: 0;
+        -webkit-transform: translateY(8px);
+        transform: translateY(8px);
+        -webkit-animation: slideIn 0.5s ease forwards;
+        animation: slideIn 0.5s ease forwards;
+      }
 
-            @-webkit-keyframes slideIn {
-                to {
-                    opacity: 1;
-                    -webkit-transform: translateY(0);
-                    transform: translateY(0);
-                }
-            }
+      @-webkit-keyframes slideIn {
+        to {
+          opacity: 1;
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
 
-            @keyframes slideIn {
-                to {
-                    opacity: 1;
-                    -webkit-transform: translateY(0);
-                    transform: translateY(0);
-                }
-            }
+      @keyframes slideIn {
+        to {
+          opacity: 1;
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
 
-            .heart-beat {
-                -webkit-animation: heartbeat 1.5s ease-in-out infinite;
-                animation: heartbeat 1.5s ease-in-out infinite;
-            }
+      .heart-beat {
+        -webkit-animation: heartbeat 1.5s ease-in-out infinite;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
 
-            @-webkit-keyframes heartbeat {
-                0%,
-                100% {
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
-                }
-                50% {
-                    -webkit-transform: scale(1.08);
-                    transform: scale(1.08);
-                }
-            }
+      @-webkit-keyframes heartbeat {
+        0%,
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+        50% {
+          -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+        }
+      }
 
-            @keyframes heartbeat {
-                0%,
-                100% {
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
-                }
-                50% {
-                    -webkit-transform: scale(1.08);
-                    transform: scale(1.08);
-                }
-            }
+      @keyframes heartbeat {
+        0%,
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+        50% {
+          -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+        }
+      }
 
-            .cute-input {
-                background: rgba(255, 255, 255, 0.8);
-                border: 2px solid rgba(139, 69, 19, 0.3);
-                -webkit-transition: all 0.3s ease;
-                transition: all 0.3s ease;
-                color: #333;
-                -webkit-appearance: none;
-                appearance: none;
-                border-radius: 0.65rem;
-            }
+      .cute-input {
+        background: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(139, 69, 19, 0.3);
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        color: #333;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0.65rem;
+      }
 
-            .cute-input:focus {
-                border-color: rgba(139, 69, 19, 0.8);
-                -webkit-box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
-                box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
-                outline: none;
-            }
+      .cute-input:focus {
+        border-color: rgba(139, 69, 19, 0.8);
+        -webkit-box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        outline: none;
+      }
 
-            .cute-input::placeholder {
-                color: #666;
-            }
+      .cute-input::placeholder {
+        color: #666;
+      }
 
-            .cute-button {
-                background: linear-gradient(135deg, #5a9a8b, #c8a882);
-                position: relative;
-                overflow: hidden;
-                -webkit-appearance: none;
-                appearance: none;
-            }
+      .cute-button {
+        background: linear-gradient(135deg, #5a9a8b, #c8a882);
+        position: relative;
+        overflow: hidden;
+        -webkit-appearance: none;
+        appearance: none;
+      }
 
-            .cute-button::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent
-                );
-                -webkit-transition: left 0.5s ease;
-                transition: left 0.5s ease;
-            }
+      .cute-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        -webkit-transition: left 0.5s ease;
+        transition: left 0.5s ease;
+      }
 
-            @media (hover: hover) {
-                .cute-button:hover::before {
-                    left: 100%;
-                }
-            }
+      @media (hover: hover) {
+        .cute-button:hover::before {
+          left: 100%;
+        }
+      }
 
-            .rounded-3xl {
-                border-radius: 1.25rem;
-                -webkit-border-radius: 1.25rem;
-                overflow: hidden;
-            }
+      .rounded-3xl {
+        border-radius: 1.25rem;
+        -webkit-border-radius: 1.25rem;
+        overflow: hidden;
+      }
 
-            body {
-                position: relative;
-                overflow-x: hidden;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
+      body {
+        position: relative;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-            body::after {
-                content: "";
-                position: fixed;
-                top: 30%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                width: 65vw;
-                height: 65vh;
-                background: radial-gradient(
-                    ellipse at center,
-                    rgba(233, 183, 236, 0.15) 0%,
-                    transparent 70%
-                );
-                z-index: -1;
-                pointer-events: none;
-            }
+      body::after {
+        content: "";
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 65vw;
+        height: 65vh;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(233, 183, 236, 0.15) 0%,
+          transparent 70%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
 
-            /* Fix for iOS Safari */
-            @supports (-webkit-touch-callout: none) {
-                .glass,
-                .glass-strong {
-                    -webkit-backdrop-filter: saturate(180%) blur(15px);
-                    backdrop-filter: saturate(180%) blur(15px);
-                }
+      /* Fix for iOS Safari */
+      @supports (-webkit-touch-callout: none) {
+        .glass,
+        .glass-strong {
+          -webkit-backdrop-filter: saturate(180%) blur(15px);
+          backdrop-filter: saturate(180%) blur(15px);
+        }
 
-                input,
-                button,
-                textarea {
-                    font-size: 16px; /* Prevents zoom on iOS */
-                }
+        input,
+        button,
+        textarea {
+          font-size: 16px; /* Prevents zoom on iOS */
+        }
 
-                .modal {
-                    position: fixed;
-                    top: env(safe-area-inset-top, 0);
-                    bottom: env(safe-area-inset-bottom, 0);
-                    left: env(safe-area-inset-left, 0);
-                    right: env(safe-area-inset-right, 0);
-                }
-            }
+        .modal {
+          position: fixed;
+          top: env(safe-area-inset-top, 0);
+          bottom: env(safe-area-inset-bottom, 0);
+          left: env(safe-area-inset-left, 0);
+          right: env(safe-area-inset-right, 0);
+        }
+      }
 
-            /* Fix for Safari animations */
-            @media not all and (min-resolution: 0.001dpcm) {
-                @supports (-webkit-appearance: none) {
-                    .floating,
-                    .floating-delayed,
-                    .heart-beat {
-                        transform: translateZ(0);
-                        -webkit-transform: translateZ(0);
-                    }
-                }
-            }
+      /* Fix for Safari animations */
+      @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+          .floating,
+          .floating-delayed,
+          .heart-beat {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+          }
+        }
+      }
 
-            /* Improved accessibility */
-            .sr-only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border-width: 0;
-            }
+      /* Improved accessibility */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
 
-            /* Better mobile experience */
-            @media (max-width: 640px) {
-                .glass-strong {
-                    border-radius: 1.1rem;
-                    -webkit-border-radius: 1.1rem;
-                }
+      /* Better mobile experience */
+      @media (max-width: 640px) {
+        .glass-strong {
+          border-radius: 1.1rem;
+          -webkit-border-radius: 1.1rem;
+        }
 
-                .message-popup {
-                    width: calc(100% - 2rem) !important;
-                    left: 1rem !important;
-                    right: 1rem !important;
-                }
-            }
+        .message-popup {
+          width: calc(100% - 2rem) !important;
+          left: 1rem !important;
+          right: 1rem !important;
+        }
+      }
 
-            /* Force hardware acceleration */
-            .hw-accelerated {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                will-change: transform;
-            }
+      /* Force hardware acceleration */
+      .hw-accelerated {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+      }
 
-            /* Improved fallingStar animation */
-            @-webkit-keyframes fallingStar {
-                0% {
-                    -webkit-transform: translateY(0) rotate(0deg) scale(0);
-                    transform: translateY(0) rotate(0deg) scale(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 1;
-                }
-                100% {
-                    -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5);
-                    transform: translateY(100vh) rotate(360deg) scale(0.5);
-                    opacity: 0;
-                }
-            }
+      /* Improved fallingStar animation */
+      @-webkit-keyframes fallingStar {
+        0% {
+          -webkit-transform: translateY(0) rotate(0deg) scale(0);
+          transform: translateY(0) rotate(0deg) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5);
+          transform: translateY(100vh) rotate(360deg) scale(0.5);
+          opacity: 0;
+        }
+      }
 
-            @keyframes fallingStar {
-                0% {
-                    -webkit-transform: translateY(0) rotate(0deg) scale(0);
-                    transform: translateY(0) rotate(0deg) scale(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 1;
-                }
-                100% {
-                    -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5);
-                    transform: translateY(100vh) rotate(360deg) scale(0.5);
-                    opacity: 0;
-                }
-            }
+      @keyframes fallingStar {
+        0% {
+          -webkit-transform: translateY(0) rotate(0deg) scale(0);
+          transform: translateY(0) rotate(0deg) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5);
+          transform: translateY(100vh) rotate(360deg) scale(0.5);
+          opacity: 0;
+        }
+      }
 
-            html,
-            body {
-                position: relative;
-                height: auto;
-                overscroll-behavior-y: auto;
-            }
+      html,
+      body {
+        position: relative;
+        height: auto;
+        overscroll-behavior-y: auto;
+      }
 
-            @supports (-webkit-touch-callout: none) {
-                body {
-                    /* iOS specific - ensures proper scrolling */
-                    -webkit-overflow-scrolling: touch;
-                }
+      @supports (-webkit-touch-callout: none) {
+        body {
+          /* iOS specific - ensures proper scrolling */
+          -webkit-overflow-scrolling: touch;
+        }
 
-                /* Override any potential scroll blockers */
-                .modal {
-                    -webkit-overflow-scrolling: touch;
-                }
+        /* Override any potential scroll blockers */
+        .modal {
+          -webkit-overflow-scrolling: touch;
+        }
 
-                .modal-content {
-                    -webkit-overflow-scrolling: touch;
-                }
-            }
-        </style>
-    </head>
-    <body
-        class="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-indigo-900 dot-pattern"
-    >
-        <!-- Age Modal -->
-        <div id="ageModal" class="modal">
-            <div class="flex items-center justify-center min-h-screen p-4">
-                <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
-                    <div class="text-center mb-5">
-                        <div class="text-5xl mb-3 floating">⚡</div>
-                        <h3 class="text-2xl font-bold mb-2 text-white handwritten">
-                            Reality Check Time
-                        </h3>
-                    </div>
+        .modal-content {
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-indigo-900 dot-pattern"
+  >
+    <!-- Age Modal -->
+    <div id="ageModal" class="modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
+          <div class="text-center mb-5">
+            <div class="text-5xl mb-3 floating">⚡</div>
+            <h3 class="text-2xl font-bold mb-2 text-white handwritten">
+              Reality Check Time
+            </h3>
+          </div>
 
-                    <div
-                        id="photoResult"
-                        class="text-center text-gray-400 text-sm bg-white/5 p-3 rounded-xl"
-                    ></div>
-                    <p class="text-gray-300 text-center mb-5 text-base">
-                        Birth year? (I promise not to judge... much)
-                    </p>
-                    <input
-                        type="number"
-                        id="birthYear"
-                        placeholder="e.g., 1995"
-                        class="w-full p-3 rounded-xl cute-input text-black placeholder-gray-400 mb-5 text-base"
-                        min="1900"
-                        max="2024"
-                        inputmode="numeric"
-                    />
-                    <div class="flex gap-3">
-                        <button
-                            onclick="calculateAge()"
-                            class="flex-1 cute-button text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                        >
-                            Hit Me With It
-                        </button>
-                        <button
-                            onclick="closeModal('ageModal')"
-                            class="flex-1 bg-white/20 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                        >
-                            Nevermind
-                        </button>
-                    </div>
-                    <div
-                        id="ageResult"
-                        class="mt-5 text-center font-medium text-black text-base"
-                    ></div>
-                </div>
-            </div>
+          <div
+            id="photoResult"
+            class="text-center text-gray-400 text-sm bg-white/5 p-3 rounded-xl"
+          ></div>
+          <p class="text-gray-300 text-center mb-5 text-base">
+            Birth year? (I promise not to judge... much)
+          </p>
+          <input
+            type="number"
+            id="birthYear"
+            placeholder="e.g., 1995"
+            class="w-full p-3 rounded-xl cute-input text-black placeholder-gray-400 mb-5 text-base"
+            min="1900"
+            max="2024"
+            inputmode="numeric"
+          />
+          <div class="flex gap-3">
+            <button
+              onclick="calculateAge()"
+              class="flex-1 cute-button text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+            >
+              Hit Me With It
+            </button>
+            <button
+              onclick="closeModal('ageModal')"
+              class="flex-1 bg-white/20 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+            >
+              Nevermind
+            </button>
+          </div>
+          <div
+            id="ageResult"
+            class="mt-5 text-center font-medium text-black text-base"
+          ></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Fortune Modal -->
-        <div id="fortuneModal" class="modal">
-            <div class="flex items-center justify-center min-h-screen p-4">
-                <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
-                    <div class="text-center mb-5">
-                        <div class="text-5xl mb-3 floating-delayed">🔮</div>
-                        <h3 class="text-2xl font-bold mb-2 text-white handwritten">
-                            Your Birthday Oracle
-                        </h3>
-                    </div>
-                    <div
-                        id="fortuneText"
-                        class="text-center mb-6 text-base text-gray-600 leading-relaxed bg-white/5 p-5 rounded-2xl"
-                    ></div>
-                    <button
-                        onclick="closeModal('fortuneModal')"
-                        class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                    >
-                        I Accept My Fate ✨
-                    </button>
-                </div>
-            </div>
+    <!-- Fortune Modal -->
+    <div id="fortuneModal" class="modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
+          <div class="text-center mb-5">
+            <div class="text-5xl mb-3 floating-delayed">🔮</div>
+            <h3 class="text-2xl font-bold mb-2 text-white handwritten">
+              Your Birthday Oracle
+            </h3>
+          </div>
+          <div
+            id="fortuneText"
+            class="text-center mb-6 text-base text-gray-600 leading-relaxed bg-white/5 p-5 rounded-2xl"
+          ></div>
+          <button
+            onclick="closeModal('fortuneModal')"
+            class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+          >
+            I Accept My Fate ✨
+          </button>
         </div>
+      </div>
+    </div>
 
-        <!-- Confession Modal -->
-        <div id="confessionModal" class="modal">
-            <div class="flex items-center justify-center min-h-screen p-4">
-                <div class="glass-strong rounded-3xl p-6 max-w-sm w-full pulse-glow">
-                    <div class="text-center mb-5">
-                        <div class="text-5xl mb-3 heart-beat hw-accelerated">💕</div>
-                        <h3 class="text-2xl font-bold mb-2 text-white handwritten">
-                            Plot Twist
-                        </h3>
-                    </div>
-                    <div class="text-center mb-6">
-                        <p class="confession-text text-xl font-bold mb-3 handwritten">
-                            Okay, confession time...
-                        </p>
-                        <div class="bg-white/10 p-5 rounded-2xl">
-                            <p class="text-gray-600 leading-relaxed text-base">
-                                Beneath all this sarcasm lies my very un-sarcastic truth: you're
-                                incredible, and honestly, it's terrifying how much I like you.
-                                So... Happy Birthday to the amazing human who's stolen my
-                                defenses. 🥺💖
-                            </p>
-                        </div>
-                    </div>
-                    <button
-                        onclick="closeModal('confessionModal')"
-                        class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                    >
-                        My Heart Can't Handle This 💗
-                    </button>
-                </div>
+    <!-- Confession Modal -->
+    <div id="confessionModal" class="modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="glass-strong rounded-3xl p-6 max-w-sm w-full pulse-glow">
+          <div class="text-center mb-5">
+            <div class="text-5xl mb-3 heart-beat hw-accelerated">💕</div>
+            <h3 class="text-2xl font-bold mb-2 text-white handwritten">
+              Plot Twist
+            </h3>
+          </div>
+          <div class="text-center mb-6">
+            <p class="confession-text text-xl font-bold mb-3 handwritten">
+              Okay, confession time...
+            </p>
+            <div class="bg-white/10 p-5 rounded-2xl">
+              <p class="text-gray-600 leading-relaxed text-base">
+                Beneath all this sarcasm lies my very un-sarcastic truth: you're
+                incredible, and honestly, it's terrifying how much I like you.
+                So... Happy Birthday to the amazing human who's stolen my
+                defenses. 🥺💖
+              </p>
             </div>
+          </div>
+          <button
+            onclick="closeModal('confessionModal')"
+            class="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+          >
+            My Heart Can't Handle This 💗
+          </button>
         </div>
+      </div>
+    </div>
 
-        <!-- Message Modal -->
-        <div id="messageModal" class="modal">
-            <div class="flex items-center justify-center min-h-screen p-4">
-                <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
-                    <div class="text-center mb-5">
-                        <div class="text-5xl mb-3 floating hw-accelerated">📝</div>
-                        <h3 class="text-2xl font-bold mb-2 text-white handwritten">
-                            Leave a Message to Your Hype Boy
-                        </h3>
-                    </div>
-                    <form id="messageForm" class="space-y-5">
-                        <div>
-                            <label
-                                for="messageInput"
-                                class="block text-gray-600 text-xs font-medium mb-2"
-                                >Your message:</label
-                            >
-                            <textarea
-                                id="messageInput"
-                                rows="4"
-                                placeholder="Tell me what's on your mind..."
-                                class="w-full p-3 rounded-xl cute-input text-black placeholder-gray-400 resize-none text-base"
-                                required
-                            ></textarea>
-                        </div>
-                        <div class="flex gap-3">
-                            <button
-                                type="submit"
-                                class="flex-1 cute-button text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                            >
-                                Send Message 💌
-                            </button>
-                            <button
-                                type="button"
-                                onclick="closeModal('messageModal')"
-                                class="flex-1 bg-white/20 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-                    <div id="messageResult"></div>
-                </div>
+    <!-- Message Modal -->
+    <div id="messageModal" class="modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="glass-strong rounded-3xl p-6 max-w-sm w-full cute-shadow">
+          <div class="text-center mb-5">
+            <div class="text-5xl mb-3 floating hw-accelerated">📝</div>
+            <h3 class="text-2xl font-bold mb-2 text-white handwritten">
+              Leave a Message to Your Hype Boy
+            </h3>
+          </div>
+          <form id="messageForm" class="space-y-5">
+            <div>
+              <label
+                for="messageInput"
+                class="block text-gray-600 text-xs font-medium mb-2"
+                >Your message:</label
+              >
+              <textarea
+                id="messageInput"
+                rows="4"
+                placeholder="Tell me what's on your mind..."
+                class="w-full p-3 rounded-xl cute-input text-black placeholder-gray-400 resize-none text-base"
+                required
+              ></textarea>
             </div>
-        </div>
-
-        <div class="container mx-auto px-4 py-6 max-w-sm">
-            <!-- Main Card -->
-            <div class="glass-strong rounded-3xl overflow-hidden card-shadow sparkle">
-                <!-- Header -->
-                <div
-                    class="bg-gradient-to-r from-amber-100 via-rose-200 to-slate-300 p-6 text-center relative border-b-3 border-teal-600"
-                >
-                    <div class="floating absolute top-5 right-5 text-2xl hw-accelerated">
-                        💫
-                    </div>
-                    <div
-                        class="floating-delayed absolute top-5 left-5 text-2xl hw-accelerated"
-                    >
-                        🎀
-                    </div>
-                    <h1 class="text-amber-900 text-3xl font-bold mb-2 handwritten">
-                        Happy Birthday
-                    </h1>
-                    <h2 class="text-slate-700 text-4xl font-light handwritten">Imane</h2>
-                    <div class="mt-3 text-slate-600 text-sm handwritten">
-                        Crafted with questionable intentions 😏
-                    </div>
-                </div>
-
-                <!-- Main Content -->
-                <div class="p-6 space-y-6">
-                    <!-- Opening Line -->
-                    <div class="text-center bg-white/5 p-5 rounded-2xl">
-                        <p
-                            id="openingLine"
-                            class="text-gray-600 text-lg leading-relaxed handwritten"
-                        ></p>
-                    </div>
-
-                    <!-- Cake Section -->
-                    <div class="text-center">
-                        <div
-                            id="cake"
-                            class="inline-block cursor-pointer subtle-hover bounce-hover p-5 bg-white/10 rounded-3xl"
-                            onclick="blowCandles()"
-                        >
-                            <div class="text-7xl mb-2">🎂</div>
-                            <div class="text-gray-600 text-sm handwritten">
-                                Make a wish (I dare you)
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Facts Section -->
-                    <div class="glass rounded-3xl p-5 cute-shadow">
-                        <h3
-                            class="text-gray-700 font-bold mb-5 text-center text-xl handwritten"
-                        >
-                            Facts About Imane
-                        </h3>
-                        <div id="roastBox" class="text-center">
-                            <div class="bg-white/10 p-5 rounded-2xl mb-5">
-                                <p
-                                    id="currentRoast"
-                                    class="text-gray-600 mb-3 leading-relaxed text-base"
-                                ></p>
-                            </div>
-                            <button
-                                onclick="generateRoast()"
-                                class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-7 py-3 rounded-xl font-semibold subtle-hover text-base"
-                            >
-                                Show Me Another Fact ✨
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Action Grid -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <button
-                            onclick="createConfetti()"
-                            class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
-                            aria-label="Celebrate with confetti"
-                        >
-                            <div class="text-2xl mb-2">🎊</div>
-                            <div class="text-white text-sm font-semibold handwritten">
-                                Celebrate
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="openModal('fortuneModal')"
-                            class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
-                            aria-label="Read your birthday fortune"
-                        >
-                            <div class="text-2xl mb-2">🔮</div>
-                            <div class="text-white text-sm font-semibold handwritten">
-                                Fortune
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="openModal('ageModal')"
-                            class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
-                            aria-label="Check your age"
-                        >
-                            <div class="text-2xl mb-2">📊</div>
-                            <div class="text-white text-sm font-semibold handwritten">
-                                Age Check
-                            </div>
-                        </button>
-
-                        <button
-                            onclick="takePhoto()"
-                            class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
-                            aria-label="Take a memory photo"
-                        >
-                            <div class="text-2xl mb-2">📸</div>
-                            <div class="text-white text-sm font-semibold handwritten">
-                                Memories
-                            </div>
-                        </button>
-                    </div>
-
-                    <!-- Secret Button -->
-                    <div class="text-center pt-4">
-                        <button
-                            onclick="openModal('confessionModal')"
-                            class="text-rose-600 hover:text-rose-500 text-sm underline opacity-70 hover:opacity-100 transition-all handwritten"
-                            aria-label="Read a secret message"
-                        >
-                            There's something I need to tell you... 💕
-                        </button>
-                    </div>
-
-                    <!-- Message Button -->
-                    <div class="text-center">
-                        <button
-                            onclick="openModal('messageModal')"
-                            class="cute-button text-white px-7 py-3 rounded-2xl font-semibold subtle-hover text-base w-full"
-                            aria-label="Leave a message"
-                        >
-                            <span class="handwritten text-lg"
-                                >📝 Leave a Message to Your Hype Boy</span
-                            >
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="glass p-5 text-center border-t border-amber-200">
-                    <p class="text-slate-600 text-sm handwritten">
-                        From your favorite pain in the ass
-                    </p>
-                    <p class="text-slate-700 font-semibold text-base handwritten">
-                        — Someone who cares more than they admit 💕
-                    </p>
-                </div>
+            <div class="flex gap-3">
+              <button
+                type="submit"
+                class="flex-1 cute-button text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+              >
+                Send Message 💌
+              </button>
+              <button
+                type="button"
+                onclick="closeModal('messageModal')"
+                class="flex-1 bg-white/20 text-white py-3 rounded-xl font-semibold subtle-hover text-base"
+              >
+                Cancel
+              </button>
             </div>
+          </form>
+          <div id="messageResult"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Confetti Container -->
+    <div class="container mx-auto px-4 py-6 max-w-sm">
+      <!-- Main Card -->
+      <div class="glass-strong rounded-3xl overflow-hidden card-shadow sparkle">
+        <!-- Header -->
         <div
-            id="confetti-container"
-            class="fixed inset-0 pointer-events-none z-50"
-            aria-hidden="true"
-            style="touch-action: none; -webkit-user-select: none; user-select: none"
-        ></div>
+          class="bg-gradient-to-r from-amber-100 via-rose-200 to-slate-300 p-6 text-center relative border-b-3 border-teal-600"
+        >
+          <div class="floating absolute top-5 right-5 text-2xl hw-accelerated">
+            💫
+          </div>
+          <div
+            class="floating-delayed absolute top-5 left-5 text-2xl hw-accelerated"
+          >
+            🎀
+          </div>
+          <h1 class="text-amber-900 text-3xl font-bold mb-2 handwritten">
+            Happy Birthday
+          </h1>
+          <h2 class="text-slate-700 text-4xl font-light handwritten">Imane</h2>
+          <div class="mt-3 text-slate-600 text-sm handwritten">
+            Crafted with questionable intentions 😏
+          </div>
+        </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Prevent iOS Safari bouncing effect
-                if (
-                    /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
-                    !window.chrome
-                ) {
-                    // Enable momentum scrolling
-                    document.documentElement.style.webkitOverflowScrolling = "touch";
+        <!-- Main Content -->
+        <div class="p-6 space-y-6">
+          <!-- Opening Line -->
+          <div class="text-center bg-white/5 p-5 rounded-2xl">
+            <p
+              id="openingLine"
+              class="text-gray-600 text-lg leading-relaxed handwritten"
+            ></p>
+          </div>
 
-                    // Remove any existing touchmove event listeners that prevent default
-                    const clonedBody = document.body.cloneNode(true);
-                    const parentNode = document.body.parentNode;
-                    parentNode.removeChild(document.body);
-                    parentNode.appendChild(clonedBody);
-                }
+          <!-- Cake Section -->
+          <div class="text-center">
+            <div
+              id="cake"
+              class="inline-block cursor-pointer subtle-hover bounce-hover p-5 bg-white/10 rounded-3xl"
+              onclick="blowCandles()"
+            >
+              <div class="text-7xl mb-2">🎂</div>
+              <div class="text-gray-600 text-sm handwritten">
+                Make a wish (I dare you)
+              </div>
+            </div>
+          </div>
 
-                // Sophisticated opening lines
-                const openingLines = [
-                    "Once upon a time, a legend named Imane was born… and the world's been better ever since.",
-                    "Today we celebrate the day the universe decided to gift us someone extraordinary.",
-                    "Another trip around the sun completed by the incredible Imane, and what a journey it's been!",
-                ];
+          <!-- Facts Section -->
+          <div class="glass rounded-3xl p-5 cute-shadow">
+            <h3
+              class="text-gray-700 font-bold mb-5 text-center text-xl handwritten"
+            >
+              Facts About Imane
+            </h3>
+            <div id="roastBox" class="text-center">
+              <div class="bg-white/10 p-5 rounded-2xl mb-5">
+                <p
+                  id="currentRoast"
+                  class="text-gray-600 mb-3 leading-relaxed text-base"
+                ></p>
+              </div>
+              <button
+                onclick="generateRoast()"
+                class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-7 py-3 rounded-xl font-semibold subtle-hover text-base"
+              >
+                Show Me Another Fact ✨
+              </button>
+            </div>
+          </div>
 
-                // Display random opening line
-                document.getElementById("openingLine").textContent =
-                    openingLines[Math.floor(Math.random() * openingLines.length)];
+          <!-- Action Grid -->
+          <div class="grid grid-cols-2 gap-3">
+            <button
+              onclick="createConfetti()"
+              class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
+              aria-label="Celebrate with confetti"
+            >
+              <div class="text-2xl mb-2">🎊</div>
+              <div class="text-white text-sm font-semibold handwritten">
+                Celebrate
+              </div>
+            </button>
 
-                // Fix iOS Safari input focus issues
-                const allInputs = document.querySelectorAll("input, textarea");
-                allInputs.forEach((input) => {
-                    input.addEventListener("focus", function () {
-                        setTimeout(() => {
-                            this.scrollIntoView({
-                                behavior: "smooth",
-                                block: "center",
-                            });
-                        }, 300);
-                    });
-                });
-            });
+            <button
+              onclick="openModal('fortuneModal')"
+              class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
+              aria-label="Read your birthday fortune"
+            >
+              <div class="text-2xl mb-2">🔮</div>
+              <div class="text-white text-sm font-semibold handwritten">
+                Fortune
+              </div>
+            </button>
 
-            // Clever roasts
-            const roasts = [
-                'Claims she\'s "not photogenic"...But looks like a Disney princess in every single photo.',
-                "Can roast you with kindness. Her sarcasm is soft, but it burns.",
-                "She's not bossy. She just knows better than everyone else.",
-                "Has the unique ability to make everyone feel special, while maintaining her mystery.",
-                "Could rule the world but decides to let others have their moment.",
-                "Makes overthinking look elegant. It's her superpower.",
-            ];
+            <button
+              onclick="openModal('ageModal')"
+              class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
+              aria-label="Check your age"
+            >
+              <div class="text-2xl mb-2">📊</div>
+              <div class="text-white text-sm font-semibold handwritten">
+                Age Check
+              </div>
+            </button>
 
-            let roastIndex = 0;
-            generateRoast();
+            <button
+              onclick="takePhoto()"
+              class="glass p-5 rounded-2xl text-center subtle-hover cute-shadow"
+              aria-label="Take a memory photo"
+            >
+              <div class="text-2xl mb-2">📸</div>
+              <div class="text-white text-sm font-semibold handwritten">
+                Memories
+              </div>
+            </button>
+          </div>
 
-            function generateRoast() {
-                document.getElementById("currentRoast").textContent =
-                    roasts[roastIndex];
-                roastIndex = (roastIndex + 1) % roasts.length;
-            }
+          <!-- Secret Button -->
+          <div class="text-center pt-4">
+            <button
+              onclick="openModal('confessionModal')"
+              class="text-rose-600 hover:text-rose-500 text-sm underline opacity-70 hover:opacity-100 transition-all handwritten"
+              aria-label="Read a secret message"
+            >
+              There's something I need to tell you... 💕
+            </button>
+          </div>
 
-            // Enhanced fortune telling
-            function generateFortune() {
-                const fortunes = [
-                    "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
-                    "A mysterious person still wants your genes.",
-                    "You'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
-                    "This year's gift? Another reason to say 'boys are dumb'.",
-                    "Your future holds many adventures, with the most exciting ones coming from unexpected places.",
-                    "Soon you'll discover a talent you didn't know you had. Use it wisely and with much sarcasm.",
-                ];
+          <!-- Message Button -->
+          <div class="text-center">
+            <button
+              onclick="openModal('messageModal')"
+              class="cute-button text-white px-7 py-3 rounded-2xl font-semibold subtle-hover text-base w-full"
+              aria-label="Leave a message"
+            >
+              <span class="handwritten text-lg"
+                >📝 Leave a Message to Your Hype Boy</span
+              >
+            </button>
+          </div>
+        </div>
 
-                document.getElementById("fortuneText").textContent =
-                    fortunes[Math.floor(Math.random() * fortunes.length)];
-            }
+        <!-- Footer -->
+        <div class="glass p-5 text-center border-t border-amber-200">
+          <p class="text-slate-600 text-sm handwritten">
+            From your favorite pain in the ass
+          </p>
+          <p class="text-slate-700 font-semibold text-base handwritten">
+            — Someone who cares more than they admit 💕
+          </p>
+        </div>
+      </div>
+    </div>
 
-            // Sophisticated age calculator
-            function calculateAge() {
-                const birthYear = parseInt(document.getElementById("birthYear").value);
-                if (!birthYear) return;
+    <!-- Confetti Container -->
+    <div
+      id="confetti-container"
+      class="fixed inset-0 pointer-events-none z-50"
+      aria-hidden="true"
+      style="touch-action: none; -webkit-user-select: none; user-select: none"
+    ></div>
 
-                const age = new Date().getFullYear() - birthYear;
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Prevent iOS Safari bouncing effect
+        if (
+          /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
+          !window.chrome
+        ) {
+          // Enable momentum scrolling
+          document.documentElement.style.webkitOverflowScrolling = "touch";
 
-                const responses = [
-                    `${age} years of mastering the art of ignoring people... and looking fabulous doing it.`,
-                    `${age} years old and still dodging emotional attachment like it's a spam call.`,
-                    `${age} candles on the cake. One for each time someone told you you're intimidating and you took it as a compliment.`,
-                    `${age} years of proving that age is just a number, but attitude is everything.`,
-                    `${age} incredible trips around the sun, and somehow you're more radiant than ever.`,
-                ];
+          // Remove any existing touchmove event listeners that prevent default
+          const clonedBody = document.body.cloneNode(true);
+          const parentNode = document.body.parentNode;
+          parentNode.removeChild(document.body);
+          parentNode.appendChild(clonedBody);
+        }
 
-                document.getElementById("ageResult").textContent =
-                    responses[Math.floor(Math.random() * responses.length)];
-            }
+        // Sophisticated opening lines
+        const openingLines = [
+          "Once upon a time, a legend named Imane was born… and the world's been better ever since.",
+          "Today we celebrate the day the universe decided to gift us someone extraordinary.",
+          "Another trip around the sun completed by the incredible Imane, and what a journey it's been!",
+        ];
 
-            // Candle wishes
-            function blowCandles() {
-                const wishes = [
-                    "You wished for honesty, so here it is: Someone's crushing hard and hiding it behind sarcastic code.",
-                    "Wish granted: You now officially have the power to scare men.",
-                    "Your wish to be left alone has been granted. Except by me. Obviously.",
-                    "The Universe considered your wish for a quiet life… then muted everyone around you. Including me. Rude.",
-                    "Plot twist: Someone already wished you'd say yes to giving them your genes. Again.",
-                    "Wish processing... please wait... ah yes! You're getting everything you deserve this year: success, joy, and plenty of reasons to laugh.",
-                ];
+        // Display random opening line
+        document.getElementById("openingLine").textContent =
+          openingLines[Math.floor(Math.random() * openingLines.length)];
 
-                showMessage(wishes[Math.floor(Math.random() * wishes.length)]);
-            }
+        // Fix iOS Safari input focus issues
+        const allInputs = document.querySelectorAll("input, textarea");
+        allInputs.forEach((input) => {
+          input.addEventListener("focus", function () {
+            setTimeout(() => {
+              this.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }, 300);
+          });
+        });
+      });
 
-            // Create a separate modal for photos
-            function takePhoto() {
-                const captions = [
-                    "📸 *Click* Perfect! You look like trouble... the good kind.",
-                    "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
-                    "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
-                    "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
-                    "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people.",
-                    "📸 *Captured* This moment with you is now eternally frozen in digital time.",
-                ];
+      // Clever roasts
+      const roasts = [
+        'Claims she\'s "not photogenic"...But looks like a Disney princess in every single photo.',
+        "Can roast you with kindness. Her sarcasm is soft, but it burns.",
+        "She's not bossy. She just knows better than everyone else.",
+        "Has the unique ability to make everyone feel special, while maintaining her mystery.",
+        "Could rule the world but decides to let others have their moment.",
+        "Makes overthinking look elegant. It's her superpower.",
+      ];
 
-                const caption = captions[Math.floor(Math.random() * captions.length)];
-                showMessage(caption);
-            }
+      let roastIndex = 0;
+      generateRoast();
 
-            function createConfetti() {
-                // Clear any previous confetti and messages
-                document.getElementById("confetti-container").innerHTML = "";
+      function generateRoast() {
+        document.getElementById("currentRoast").textContent =
+          roasts[roastIndex];
+        roastIndex = (roastIndex + 1) % roasts.length;
+      }
 
-                // Remove any existing messages
-                const existingMessages = document.querySelectorAll(".message-popup");
-                existingMessages.forEach((msg) => msg.remove());
+      // Enhanced fortune telling
+      function generateFortune() {
+        const fortunes = [
+          "The stars say: Stay single, stay sane, stay sarcastic. You're doing amazing.",
+          "A mysterious person still wants your genes.",
+          "You'll finally find peace. And by peace, we mean ghosting 83% of your contacts.",
+          "This year's gift? Another reason to say 'boys are dumb'.",
+          "Your future holds many adventures, with the most exciting ones coming from unexpected places.",
+          "Soon you'll discover a talent you didn't know you had. Use it wisely and with much sarcasm.",
+        ];
 
-                // Better confetti with improved animation
-                const container = document.getElementById("confetti-container");
-                const colors = [
-                    "#ff9ff3",
-                    "#feca57",
-                    "#ff6b6b",
-                    "#48dbfb",
-                    "#1dd1a1",
-                    "#00d2d3",
-                    "#54a0ff",
-                    "#5f27cd",
-                ];
+        document.getElementById("fortuneText").textContent =
+          fortunes[Math.floor(Math.random() * fortunes.length)];
+      }
 
-                // More varied confetti (250 pieces for better performance)
-                for (let i = 0; i < 250; i++) {
-                    const confetti = document.createElement("div");
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const shape =
-                        Math.random() > 0.7
-                            ? "circle"
-                            : Math.random() > 0.5
-                            ? "rect"
-                            : "star";
-                    const size = Math.random() * 10 + 3;
+      // Sophisticated age calculator
+      function calculateAge() {
+        const birthYear = parseInt(document.getElementById("birthYear").value);
+        if (!birthYear) return;
 
-                    // Create different shapes
-                    if (shape === "star") {
-                        confetti.innerHTML = "★";
-                        confetti.style.color = color;
-                        confetti.style.fontSize = `${size * 1.5}px`;
-                    } else {
-                        confetti.style.width = `${size}px`;
-                        confetti.style.height = `${
-                            shape === "circle" ? size : Math.random() * 6 + 3
-                        }px`;
-                        confetti.style.background = color;
-                        confetti.style.borderRadius = `${
-                            shape === "circle" ? "50%" : Math.random() > 0.5 ? "2px" : "0"
-                        }`;
-                    }
+        const age = new Date().getFullYear() - birthYear;
 
-                    // Better animation with varying speeds and rotation
-                    const duration = Math.random() * 3 + 2;
-                    const rotateDir = Math.random() > 0.5 ? 1 : -1;
+        const responses = [
+          `${age} years of mastering the art of ignoring people... and looking fabulous doing it.`,
+          `${age} years old and still dodging emotional attachment like it's a spam call.`,
+          `${age} candles on the cake. One for each time someone told you you're intimidating and you took it as a compliment.`,
+          `${age} years of proving that age is just a number, but attitude is everything.`,
+          `${age} incredible trips around the sun, and somehow you're more radiant than ever.`,
+        ];
 
-                    confetti.className = "hw-accelerated";
-                    confetti.style.cssText += `
+        document.getElementById("ageResult").textContent =
+          responses[Math.floor(Math.random() * responses.length)];
+      }
+
+      // Candle wishes
+      function blowCandles() {
+        const wishes = [
+          "You wished for honesty, so here it is: Someone's crushing hard and hiding it behind sarcastic code.",
+          "Wish granted: You now officially have the power to scare men.",
+          "Your wish to be left alone has been granted. Except by me. Obviously.",
+          "The Universe considered your wish for a quiet life… then muted everyone around you. Including me. Rude.",
+          "Plot twist: Someone already wished you'd say yes to giving them your genes. Again.",
+          "Wish processing... please wait... ah yes! You're getting everything you deserve this year: success, joy, and plenty of reasons to laugh.",
+        ];
+
+        showMessage(wishes[Math.floor(Math.random() * wishes.length)]);
+      }
+
+      // Create a separate modal for photos
+      function takePhoto() {
+        const captions = [
+          "📸 *Click* Perfect! You look like trouble... the good kind.",
+          "📸 *Flash* Gorgeous! This one's definitely going in my 'reasons to smile' folder.",
+          "📸 *Snap* Stunning! Filter level: No filter needed, you're naturally this amazing.",
+          "📸 *Cheese* Beautiful! This is going straight to my wallpaper... I mean, what?",
+          "📸 *Perfect* Amazing shot! You're so photogenic it's actually unfair to other people.",
+          "📸 *Captured* This moment with you is now eternally frozen in digital time.",
+        ];
+
+        const caption = captions[Math.floor(Math.random() * captions.length)];
+        showMessage(caption);
+      }
+
+      function createConfetti() {
+        // Clear any previous confetti and messages
+        document.getElementById("confetti-container").innerHTML = "";
+
+        // Remove any existing messages
+        const existingMessages = document.querySelectorAll(".message-popup");
+        existingMessages.forEach((msg) => msg.remove());
+
+        // Better confetti with improved animation
+        const container = document.getElementById("confetti-container");
+        const colors = [
+          "#ff9ff3",
+          "#feca57",
+          "#ff6b6b",
+          "#48dbfb",
+          "#1dd1a1",
+          "#00d2d3",
+          "#54a0ff",
+          "#5f27cd",
+        ];
+
+        // More varied confetti (250 pieces for better performance)
+        for (let i = 0; i < 250; i++) {
+          const confetti = document.createElement("div");
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const shape =
+            Math.random() > 0.7
+              ? "circle"
+              : Math.random() > 0.5
+              ? "rect"
+              : "star";
+          const size = Math.random() * 10 + 3;
+
+          // Create different shapes
+          if (shape === "star") {
+            confetti.innerHTML = "★";
+            confetti.style.color = color;
+            confetti.style.fontSize = `${size * 1.5}px`;
+          } else {
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${
+              shape === "circle" ? size : Math.random() * 6 + 3
+            }px`;
+            confetti.style.background = color;
+            confetti.style.borderRadius = `${
+              shape === "circle" ? "50%" : Math.random() > 0.5 ? "2px" : "0"
+            }`;
+          }
+
+          // Better animation with varying speeds and rotation
+          const duration = Math.random() * 3 + 2;
+          const rotateDir = Math.random() > 0.5 ? 1 : -1;
+
+          confetti.className = "hw-accelerated";
+          confetti.style.cssText += `
                                                 position: absolute;
                                                 top: -5%;
                                                 left: ${Math.random() * 100}%;
-                                                transform: rotate(${Math.random() * 360}deg);
-                                                opacity: ${Math.random() * 0.7 + 0.3};
+                                                transform: rotate(${
+                                                  Math.random() * 360
+                                                }deg);
+                                                opacity: ${
+                                                  Math.random() * 0.7 + 0.3
+                                                };
                                                 transition: all ${duration}s cubic-bezier(0.215, 0.61, 0.355, 1);
-                                                box-shadow: 0 0 ${Math.random() * 8 + 4}px ${color}40;
+                                                box-shadow: 0 0 ${
+                                                  Math.random() * 8 + 4
+                                                }px ${color}40;
                                                 z-index: 1000;
                                                 will-change: transform, opacity;
                                 `;
 
-                    container.appendChild(confetti);
+          container.appendChild(confetti);
 
-                    // Add a small delay for each confetti for a more natural falling effect
-                    setTimeout(() => {
-                        confetti.style.top = `${95 + Math.random() * 10}%`;
-                        confetti.style.left = `${
-                            parseFloat(confetti.style.left) + (Math.random() * 40 - 20)
-                        }%`;
-                        confetti.style.transform = `rotate(${
-                            rotateDir * (Math.random() * 960 + 360)
-                        }deg)`;
-                        confetti.style.opacity = "0";
-                    }, Math.random() * 300);
+          // Add a small delay for each confetti for a more natural falling effect
+          setTimeout(() => {
+            confetti.style.top = `${95 + Math.random() * 10}%`;
+            confetti.style.left = `${
+              parseFloat(confetti.style.left) + (Math.random() * 40 - 20)
+            }%`;
+            confetti.style.transform = `rotate(${
+              rotateDir * (Math.random() * 960 + 360)
+            }deg)`;
+            confetti.style.opacity = "0";
+          }, Math.random() * 300);
 
-                    setTimeout(() => confetti.remove(), duration * 1000);
-                }
+          setTimeout(() => confetti.remove(), duration * 1000);
+        }
 
-                // Add 3D falling gold stars - fewer for better performance
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const star = document.createElement("div");
-                        star.innerHTML = "⭐";
-                        star.className = "hw-accelerated";
-                        star.style.cssText = `
+        // Add 3D falling gold stars - fewer for better performance
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            const star = document.createElement("div");
+            star.innerHTML = "⭐";
+            star.className = "hw-accelerated";
+            star.style.cssText = `
                                                                 position: fixed;
-                                                                font-size: ${Math.random() * 25 + 15}px;
-                                                                left: ${Math.random() * 100}vw;
+                                                                font-size: ${
+                                                                  Math.random() *
+                                                                    25 +
+                                                                  15
+                                                                }px;
+                                                                left: ${
+                                                                  Math.random() *
+                                                                  100
+                                                                }vw;
                                                                 top: -50px;
                                                                 opacity: 0;
                                                                 z-index: 1001;
                                                                 text-shadow: 0 0 8px gold;
                                                                 will-change: transform, opacity;
                                                                 animation: fallingStar ${
-                                                                    Math.random() * 2 + 3
+                                                                  Math.random() *
+                                                                    2 +
+                                                                  3
                                                                 }s forwards ease-in;
                                                 `;
-                        container.appendChild(star);
+            container.appendChild(star);
 
-                        setTimeout(() => star.remove(), 5000);
-                    }, i * 100);
-                }
+            setTimeout(() => star.remove(), 5000);
+          }, i * 100);
+        }
 
-                // Add a style for the falling star animation if it doesn't exist
-                if (!document.querySelector("#fallingStar-style")) {
-                    const style = document.createElement("style");
-                    style.id = "fallingStar-style";
-                    style.textContent = `
+        // Add a style for the falling star animation if it doesn't exist
+        if (!document.querySelector("#fallingStar-style")) {
+          const style = document.createElement("style");
+          style.id = "fallingStar-style";
+          style.textContent = `
                                                 @-webkit-keyframes fallingStar {
                                                                 0% { -webkit-transform: translateY(0) rotate(0deg) scale(0); transform: translateY(0) rotate(0deg) scale(0); opacity: 0; }
                                                                 10% { opacity: 1; }
@@ -1152,12 +1173,12 @@
                                                                 100% { -webkit-transform: translateY(100vh) rotate(360deg) scale(0.5); transform: translateY(100vh) rotate(360deg) scale(0.5); opacity: 0; }
                                                 }
                                 `;
-                    document.head.appendChild(style);
-                }
+          document.head.appendChild(style);
+        }
 
-                // Add a gentle flash
-                const flash = document.createElement("div");
-                flash.style.cssText = `
+        // Add a gentle flash
+        const flash = document.createElement("div");
+        flash.style.cssText = `
                                 position: fixed;
                                 top: 0;
                                 right: 0;
@@ -1171,13 +1192,13 @@
                                 -webkit-animation: gentleFlash 1.5s ease-out forwards;
                                 will-change: opacity;
                 `;
-                document.body.appendChild(flash);
+        document.body.appendChild(flash);
 
-                // Add a style for the flash animation if it doesn't exist
-                if (!document.querySelector("#gentleFlash-style")) {
-                    const style = document.createElement("style");
-                    style.id = "gentleFlash-style";
-                    style.textContent = `
+        // Add a style for the flash animation if it doesn't exist
+        if (!document.querySelector("#gentleFlash-style")) {
+          const style = document.createElement("style");
+          style.id = "gentleFlash-style";
+          style.textContent = `
                                                 @-webkit-keyframes gentleFlash {
                                                                 0% { opacity: 0; }
                                                                 30% { opacity: 0.7; }
@@ -1189,161 +1210,161 @@
                                                                 100% { opacity: 0; }
                                                 }
                                 `;
-                    document.head.appendChild(style);
-                }
+          document.head.appendChild(style);
+        }
 
-                setTimeout(() => flash.remove(), 1500);
+        setTimeout(() => flash.remove(), 1500);
 
-                // Try to play a celebration sound
-                try {
-                    const audio = new Audio(
-                        "https://assets.mixkit.co/active_storage/sfx/1927/1927-preview.mp3"
-                    );
-                    audio.volume = 0.3;
-                    const playPromise = audio.play();
+        // Try to play a celebration sound
+        try {
+          const audio = new Audio(
+            "https://assets.mixkit.co/active_storage/sfx/1927/1927-preview.mp3"
+          );
+          audio.volume = 0.3;
+          const playPromise = audio.play();
 
-                    if (playPromise !== undefined) {
-                        playPromise.catch((error) => {
-                            console.log("Auto-play was prevented:", error);
-                            // Create a play button
-                            const soundButton = document.createElement("button");
-                            soundButton.textContent = "🔊 Play Sound";
-                            soundButton.className =
-                                "fixed bottom-4 right-4 z-[1002] bg-white/80 text-purple-700 px-3 py-1 rounded-full shadow-lg text-sm";
-                            soundButton.onclick = function () {
-                                audio.play();
-                                this.remove();
-                            };
-                            document.body.appendChild(soundButton);
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Auto-play was prevented:", error);
+              // Create a play button
+              const soundButton = document.createElement("button");
+              soundButton.textContent = "🔊 Play Sound";
+              soundButton.className =
+                "fixed bottom-4 right-4 z-[1002] bg-white/80 text-purple-700 px-3 py-1 rounded-full shadow-lg text-sm";
+              soundButton.onclick = function () {
+                audio.play();
+                this.remove();
+              };
+              document.body.appendChild(soundButton);
 
-                            // Auto-remove after 5 seconds
-                            setTimeout(() => soundButton.remove(), 5000);
-                        });
-                    }
-                } catch (e) {
-                    console.log("Sound couldn't be loaded:", e);
-                }
+              // Auto-remove after 5 seconds
+              setTimeout(() => soundButton.remove(), 5000);
+            });
+          }
+        } catch (e) {
+          console.log("Sound couldn't be loaded:", e);
+        }
 
-                // Show celebratory message
-                setTimeout(() => {
-                    showMessage("🥳 Happy Birthday Queen! Have an incredible day! 🎉");
-                }, 500);
+        // Show celebratory message
+        setTimeout(() => {
+          showMessage("🥳 Happy Birthday Queen! Have an incredible day! 🎉");
+        }, 500);
+      }
+
+      // Message form handling
+      document
+        .getElementById("messageForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const messageInput = document.getElementById("messageInput");
+          const messageResult = document.getElementById("messageResult");
+          const message = messageInput.value.trim();
+
+          if (!message) {
+            messageResult.innerHTML =
+              '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
+            return;
+          }
+
+          // Show loading state
+          messageResult.innerHTML =
+            '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
+
+          try {
+            const formData = new FormData();
+            formData.append("name", "Imane");
+            formData.append("email", "birthday@example.com");
+            formData.append("message", message);
+
+            const response = await fetch(
+              "https://oussamaapi.azizbenmallouk.com/api/messages",
+              {
+                method: "POST",
+                body: formData,
+              }
+            );
+
+            if (response.ok) {
+              messageResult.innerHTML =
+                '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
+              messageInput.value = "";
+              setTimeout(() => {
+                closeModal("messageModal");
+                messageResult.innerHTML = "";
+              }, 3000);
+            } else {
+              throw new Error("Failed to send message");
             }
+          } catch (error) {
+            messageResult.innerHTML =
+              '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
+          }
+        });
 
-            // Message form handling
-            document
-                .getElementById("messageForm")
-                .addEventListener("submit", async function (e) {
-                    e.preventDefault();
+      function openModal(modalId) {
+        if (modalId === "fortuneModal") generateFortune();
 
-                    const messageInput = document.getElementById("messageInput");
-                    const messageResult = document.getElementById("messageResult");
-                    const message = messageInput.value.trim();
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block";
 
-                    if (!message) {
-                        messageResult.innerHTML =
-                            '<div class="text-red-400 text-center mt-4">Please enter a message!</div>';
-                        return;
-                    }
+        // Store current scroll position
+        modal.setAttribute("data-scroll-pos", window.scrollY);
 
-                    // Show loading state
-                    messageResult.innerHTML =
-                        '<div class="text-center mt-4 text-gray-600">Sending your message... 💕</div>';
+        // On iOS, we need special handling
+        if (
+          /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
+          !window.chrome
+        ) {
+          document.body.style.position = "fixed";
+          document.body.style.top = `-${window.scrollY}px`;
+          document.body.style.width = "100%";
+        } else {
+          // For other browsers
+          document.body.style.overflow = "hidden";
+        }
+      }
 
-                    try {
-                        const formData = new FormData();
-                        formData.append("name", "Imane");
-                        formData.append("email", "birthday@example.com");
-                        formData.append("message", message);
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
 
-                        const response = await fetch(
-                            "https://oussamaapi.azizbenmallouk.com/api/messages",
-                            {
-                                method: "POST",
-                                body: formData,
-                            }
-                        );
+        // Get stored scroll position
+        const scrollPos = modal.getAttribute("data-scroll-pos") || 0;
 
-                        if (response.ok) {
-                            messageResult.innerHTML =
-                                '<div class="message-success">Message sent successfully! Your hype boy will be so happy! 💖</div>';
-                            messageInput.value = "";
-                            setTimeout(() => {
-                                closeModal("messageModal");
-                                messageResult.innerHTML = "";
-                            }, 3000);
-                        } else {
-                            throw new Error("Failed to send message");
-                        }
-                    } catch (error) {
-                        messageResult.innerHTML =
-                            '<div class="text-red-400 text-center mt-4">Oops! Something went wrong. Try again later! 😅</div>';
-                    }
-                });
+        modal.style.display = "none";
 
-            function openModal(modalId) {
-                if (modalId === "fortuneModal") generateFortune();
+        // On iOS, we need special handling
+        if (
+          /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
+          !window.chrome
+        ) {
+          document.body.style.position = "";
+          document.body.style.top = "";
+          document.body.style.width = "";
+          window.scrollTo(0, parseInt(scrollPos));
+        } else {
+          // For other browsers
+          document.body.style.overflow = "";
+        }
 
-                const modal = document.getElementById(modalId);
-                modal.style.display = "block";
+        if (modalId === "messageModal") {
+          document.getElementById("messageResult").innerHTML = "";
+        }
+      }
+      function showMessage(text) {
+        // Remove any existing messages first
+        const existingMessages = document.querySelectorAll(".message-popup");
+        existingMessages.forEach((msg) => {
+          msg.style.opacity = "0";
+          msg.style.transform = "translateY(-30px)";
+          setTimeout(() => msg.remove(), 300);
+        });
 
-                // Store current scroll position
-                modal.setAttribute("data-scroll-pos", window.scrollY);
-
-                // On iOS, we need special handling
-                if (
-                    /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
-                    !window.chrome
-                ) {
-                    document.body.style.position = "fixed";
-                    document.body.style.top = `-${window.scrollY}px`;
-                    document.body.style.width = "100%";
-                } else {
-                    // For other browsers
-                    document.body.style.overflow = "hidden";
-                }
-            }
-
-            function closeModal(modalId) {
-                const modal = document.getElementById(modalId);
-
-                // Get stored scroll position
-                const scrollPos = modal.getAttribute("data-scroll-pos") || 0;
-
-                modal.style.display = "none";
-
-                // On iOS, we need special handling
-                if (
-                    /iPad|iPhone|iPod|Safari/.test(navigator.userAgent) &&
-                    !window.chrome
-                ) {
-                    document.body.style.position = "";
-                    document.body.style.top = "";
-                    document.body.style.width = "";
-                    window.scrollTo(0, parseInt(scrollPos));
-                } else {
-                    // For other browsers
-                    document.body.style.overflow = "";
-                }
-
-                if (modalId === "messageModal") {
-                    document.getElementById("messageResult").innerHTML = "";
-                }
-            }
-            function showMessage(text) {
-                // Remove any existing messages first
-                const existingMessages = document.querySelectorAll(".message-popup");
-                existingMessages.forEach((msg) => {
-                    msg.style.opacity = "0";
-                    msg.style.transform = "translateY(-30px)";
-                    setTimeout(() => msg.remove(), 300);
-                });
-
-                const message = document.createElement("div");
-                message.textContent = text;
-                message.className =
-                    "fixed top-5 left-4 right-4 p-5 rounded-2xl text-center text-base message-popup hw-accelerated";
-                message.style.cssText = `
+        const message = document.createElement("div");
+        message.textContent = text;
+        message.className =
+          "fixed top-5 left-4 right-4 p-5 rounded-2xl text-center text-base message-popup hw-accelerated";
+        message.style.cssText = `
                                 background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(236, 72, 153, 0.95));
                                 color: white;
                                 box-shadow: 0 3px 16px rgba(255, 182, 193, 0.3), 0 6px 25px rgba(186, 85, 211, 0.4);
@@ -1362,32 +1383,32 @@
                                 margin-right: auto;
                 `;
 
-                document.body.appendChild(message);
+        document.body.appendChild(message);
 
-                // Start visible after a brief delay
-                setTimeout(() => {
-                    message.style.transition = "all 0.5s ease";
-                    message.style.webkitTransition = "all 0.5s ease";
-                    message.style.opacity = "1";
-                    message.style.transform = "translateY(0)";
-                    message.style.webkitTransform = "translateY(0)";
-                }, 100);
+        // Start visible after a brief delay
+        setTimeout(() => {
+          message.style.transition = "all 0.5s ease";
+          message.style.webkitTransition = "all 0.5s ease";
+          message.style.opacity = "1";
+          message.style.transform = "translateY(0)";
+          message.style.webkitTransform = "translateY(0)";
+        }, 100);
 
-                // Increase timeout to 8 seconds before fading out
-                setTimeout(() => {
-                    message.style.opacity = "0";
-                    message.style.transform = "translateY(-20px)";
-                    message.style.webkitTransform = "translateY(-20px)";
+        // Increase timeout to 8 seconds before fading out
+        setTimeout(() => {
+          message.style.opacity = "0";
+          message.style.transform = "translateY(-20px)";
+          message.style.webkitTransform = "translateY(-20px)";
 
-                    // Remove after animation completes
-                    setTimeout(() => message.remove(), 500);
-                }, 8000);
-            }
+          // Remove after animation completes
+          setTimeout(() => message.remove(), 500);
+        }, 8000);
+      }
 
-            // Enable passive touch listeners for better scrolling
-            document.addEventListener("touchstart", function () {}, {
-                passive: true,
-            });
-        </script>
-    </body>
+      // Enable passive touch listeners for better scrolling
+      document.addEventListener("touchstart", function () {}, {
+        passive: true,
+      });
+    </script>
+  </body>
 </html>
