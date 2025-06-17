@@ -1241,7 +1241,7 @@
       // Message form handling
       document
         .getElementById("messageForm")
-        .addEventListener("submit", async function (e) {
+        .addEventListener("submit", function (e) {
           e.preventDefault();
 
           const messageInput = document.getElementById("messageInput");
@@ -1264,7 +1264,7 @@
             formData.append("email", "birthday@example.com");
             formData.append("message", message);
 
-            const response = await fetch(
+            const response =  fetch(
               "https://oussamaapi.azizbenmallouk.com/api/messages",
               {
                 method: "POST",
