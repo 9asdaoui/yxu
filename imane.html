@@ -838,11 +838,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Prevent iOS Safari bouncing effect
-                document.body.addEventListener('touchmove', function(e) {
-                    if (e.target.closest('.modal-content') === null) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
+            
                 
                 // Sophisticated opening lines
                 const openingLines = [
